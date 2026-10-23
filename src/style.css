@@ -34,6 +34,11 @@ textarea::placeholder { color: #85929c; }
 .primary { width: 100%; display: flex; justify-content: space-between; align-items: center; border: 0; border-radius: 6px; background: #235e91; color: white; padding: 16px 20px; margin-top: 24px; font-weight: 700; }
 .primary:hover:not(:disabled) { background: #194a75; }
 .status { min-height: 42px; padding-top: 12px; font-size: .86rem; line-height: 1.6; color: #526477; }
+.status > span:first-child { display: block; }
+.progress-track { display: block; position: relative; overflow: hidden; width: 100%; height: 6px; margin-top: 10px; border-radius: 999px; background: #dfe8ed; }
+.progress-indeterminate { display: block; width: 38%; height: 100%; border-radius: inherit; background: #235e91; animation: progress-slide 1.25s ease-in-out infinite; }
+@keyframes progress-slide { 0% { transform: translateX(-110%); } 50% { transform: translateX(165%); } 100% { transform: translateX(275%); } }
+@media (prefers-reduced-motion: reduce) { .progress-indeterminate { animation-duration: 2.5s; } }
 .error { color: #a12d2d; }
 .playback { display: flex; align-items: center; justify-content: space-between; gap: 16px; border-top: 1px solid #e4e9eb; margin-top: 12px; padding-top: 24px; }
 .playback-label { margin: 0; }

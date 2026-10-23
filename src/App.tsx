@@ -254,8 +254,8 @@ export default function App() {
         <p className="hint">入力した文章はこのブラウザ内で音声に変換します。最大 {MAX_LENGTH} 文字は暫定です。</p>
         <button className="primary" type="button" onClick={generate} disabled={busy}>{status === 'error' ? 'もう一度生成する' : status === 'ready' && !stale ? '再生成する' : '音声を生成する'} <span aria-hidden="true">→</span></button>
         <div className="status" role="status" aria-live="polite">
-          {status === 'loading' && '音声データを準備しています。初回は時間がかかる場合があります。'}
-          {status === 'generating' && '音声を生成しています…'}
+          {status === 'loading' && <><span>音声データを準備しています。初回は時間がかかる場合があります。</span><span className="progress-track" role="progressbar" aria-label="音声モデルの準備中" aria-valuetext="準備中"><span className="progress-indeterminate" /></span></>}
+          {status === 'generating' && <><span>音声を生成しています…</span><span className="progress-track" role="progressbar" aria-label="音声の生成中" aria-valuetext="生成中"><span className="progress-indeterminate" /></span></>}
           {error && <span className="error">{error}</span>}
           {status === 'ready' && !error && (stale ? '文章が変更されています。新しい文章を聞くには、もう一度生成してください。' : '音声の準備ができました。')}
         </div>
