@@ -230,6 +230,7 @@ export default function App() {
 
   const busy = status === 'loading' || status === 'generating'
   const stale = Boolean(audioUrl && text !== generatedText)
+  const customReady = mode === 'custom' && Boolean(audioUrl) && !stale && status === 'ready'
   return (
     <main className="page">
       <header className="heading">
@@ -252,7 +253,7 @@ export default function App() {
         <div className="field-heading"><label id="input-title" htmlFor="text">文章</label><span>{text.length} / {MAX_LENGTH} 文字</span></div>
         <textarea id="text" maxLength={MAX_LENGTH} value={text} onChange={(event) => { setText(event.target.value); setSelectedMaterialId(''); setMode('custom') }} placeholder={mode === 'custom' ? 'ここに日本語の文章を入力、または貼り付けてください。' : '問題集から教材を選ぶと本文が表示されます。'} />
         <p className="hint">入力した文章はこのブラウザ内で音声に変換します。最大 {MAX_LENGTH} 文字は暫定です。</p>
-        <button className="primary" type="button" onClick={generate} disabled={busy}>{status === 'error' ? 'もう一度生成する' : '音声を生成する'} <span aria-hidden="true">→</span></button>
+        <button className={`primary${customReady ? ' primary-play' : ''}`} type="button" onClick={customReady ? togglePlayback : generate} disabled={busy}>{customReady ? (playing ? '一時停止' : '再生する') : (status === 'error' ? 'もう一度生成する' : '音声を生成する')} <span aria-hidden="true">{customReady ? (playing ? 'Ⅱ' : '▶') : '→'}</span></button>
         <div className="status" role="status" aria-live="polite">
           {status === 'loading' && '音声データを準備しています。初回は時間がかかる場合があります。'}
           {status === 'generating' && '音声を生成しています…'}
