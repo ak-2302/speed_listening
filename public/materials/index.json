@@ -4,5 +4,17 @@
     "title": "集中力を保つ小さな工夫",
     "path": "materials/daily-focus.json",
     "audio": "audio/daily-focus.ogg"
+  },
+  {
+    "id": "morning-walk",
+    "title": "朝の散歩を続ける工夫",
+    "path": "materials/morning-walk.json",
+    "audio": "audio/morning-walk.ogg"
+  },
+  {
+    "id": "notification-break",
+    "title": "通知を減らして集中する方法",
+    "path": "materials/notification-break.json",
+    "audio": "audio/notification-break.ogg"
   }
 ]
