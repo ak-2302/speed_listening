@@ -2,7 +2,7 @@
   "name": "速聴トレーニング",
   "short_name": "速聴トレーニング",
   "description": "文章を聞いて理解度を確認する速聴トレーニングアプリ",
-  "start_url": ".",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#f5f5f1",
   "theme_color": "#235e91",

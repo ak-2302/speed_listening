@@ -19,7 +19,7 @@ npm run dev
 
 `--ignore-scripts` は音声合成パッケージが別の音声と辞書を自動取得する処理を避けるために指定します。`prepare:assets` は指定した辞書と音声を取得し、SHA-256 を照合して `public/assets/` に展開します。このフォルダは Git に含めません。初回の辞書・音声取得にはネットワークが必要です。
 
-表示されたローカル URL をブラウザで開き、文章を入力して「音声を生成する」を押します。生成後に「再生」を押すと聞けます。生成はブラウザ内で行い、入力した文章を保存しません。最大 100 文字は暫定値です。文章が長いと分割して生成するため、文の区切りや読みが変わる場合があります。
+表示されたローカル URL をブラウザで開き、モードを選択して利用します。自作文章は入力後に「音声を生成する」を押します。生成後は右下のミニプレイヤーで聞けます。生成はブラウザ内で行い、入力した文章を保存しません。最大 400 文字は暫定値です。文章が長いと分割して生成するため、文の区切りや読みが変わる場合があります。
 
 ```sh
 npm run lint
@@ -30,6 +30,10 @@ npm run preview
 ```
 
 `npm run build` の前に `npm run prepare:assets` が必要です。本番ビルドは `dist/` に生成されます。
+
+## GitHub Pagesへの公開
+
+`dev` ブランチへpushすると、GitHub Actionsの[Deploy to GitHub Pages](.github/workflows/deploy-pages.yml)がビルドと公開を行います。リポジトリの Settings → Pages → Build and deployment で、Sourceを「GitHub Actions」に設定してください。公開URLは `https://<ユーザー名>.github.io/speed_listening/` です。
 
 ## 教材JSONと音声の生成
 
