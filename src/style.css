@@ -51,6 +51,7 @@ textarea::placeholder { color: #85929c; }
 @media (prefers-reduced-motion: reduce) { .progress-indeterminate { animation-duration: 2.5s; } }
 .error { color: #a12d2d; }
 .playback { display: flex; align-items: center; justify-content: space-between; gap: 16px; border-top: 1px solid #e4e9eb; margin-top: 12px; padding-top: 24px; }
+.material-playback { border-top: 0; margin-top: 0; padding-top: 0; }
 .playback-label { margin: 0; }
 .play { min-width: 112px; padding: 12px 18px; border: 1px solid #235e91; border-radius: 6px; color: #235e91; background: white; font-weight: 700; }
 .material-play { width: 100%; }
