@@ -31,6 +31,16 @@ npm run preview
 
 `npm run build` の前に `npm run prepare:assets` が必要です。本番ビルドは `dist/` に生成されます。
 
+## 教材JSONと音声の生成
+
+教材JSONを`materials/`に置き、Open JTalkをインストールした環境で次を実行すると、教材JSON・教材音声・`index.json`を`public/`へ配置します。
+
+```sh
+python3 scripts/build_materials.py
+```
+
+詳細は[ローカル教材作成](docs/ローカル教材作成.md)を参照してください。
+
 ## 音声と配布条件
 
 - 音声は [NVDA 日本語版 2026.2jp の tohoku-f01-neutral.htsvoice](https://github.com/nvdajp/nvdajp/tree/release-2026.2jp/source/synthDrivers/jtalk/tohokuf01) を使用します。Copyright 2015 東北大学 Intelligent Communication Network (Ito-Nose) Laboratory、[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)。音声ファイルは変更していません。
