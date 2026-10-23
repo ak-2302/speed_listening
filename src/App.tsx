@@ -268,6 +268,7 @@ export default function App() {
   const stale = Boolean(audioUrl && text !== generatedText)
   return (
     <main className="page">
+      {status === 'loading' && <div className="model-loading-backdrop" role="status" aria-live="polite"><div className="model-loading"><span className="loading-spinner" aria-hidden="true" /><strong>音声モデルを読み込んでいます</strong><span>初回のみ時間がかかります。</span></div></div>}
       {showIntro && <div className="intro-backdrop"><section className="intro-modal" role="dialog" aria-modal="true" aria-labelledby="intro-title">
         <p className="eyebrow">LISTENING PRACTICE</p>
         <h2 id="intro-title">速聴トレーニングへようこそ</h2>
@@ -290,7 +291,6 @@ export default function App() {
           <textarea id="text" maxLength={MAX_LENGTH} value={text} onChange={(event) => { setText(event.target.value); setSelectedMaterialId(''); setMode('custom') }} placeholder="ここに日本語の文章を入力、または貼り付けてください。" />
           <button className="primary" type="button" onClick={() => generate()} disabled={busy}>{status === 'error' ? 'もう一度生成する' : status === 'ready' && !stale ? '再生成する' : '音声を生成する'} <span aria-hidden="true">→</span></button></>}
         {(mode === 'custom' || error) && <div className="status" role="status" aria-live="polite">
-          {mode === 'custom' && status === 'loading' && <><span>音声データを準備しています。初回は時間がかかる場合があります。</span><span className="progress-track" role="progressbar" aria-label="音声モデルの準備中" aria-valuetext="準備中"><span className="progress-indeterminate" /></span></>}
           {mode === 'custom' && status === 'generating' && <><span>音声を生成しています…</span><span className="progress-track" role="progressbar" aria-label="音声の生成中" aria-valuetext="生成中"><span className="progress-indeterminate" /></span></>}
           {error && <span className="error">{error}</span>}
           {mode === 'custom' && status === 'ready' && !error && (stale ? '文章が変更されています。新しい文章を聞くには、もう一度生成してください。' : '音声の準備ができました。')}
