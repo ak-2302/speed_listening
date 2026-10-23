@@ -251,7 +251,6 @@ export default function App() {
       <section className="workspace" aria-labelledby="input-title">
         <div className="field-heading"><label id="input-title" htmlFor="text">文章</label><span>{text.length} / {MAX_LENGTH} 文字</span></div>
         <textarea id="text" maxLength={MAX_LENGTH} value={text} onChange={(event) => { setText(event.target.value); setSelectedMaterialId(''); setMode('custom') }} placeholder={mode === 'custom' ? 'ここに日本語の文章を入力、または貼り付けてください。' : '問題集から教材を選ぶと本文が表示されます。'} />
-        <p className="hint">入力した文章はこのブラウザ内で音声に変換します。最大 {MAX_LENGTH} 文字は暫定です。</p>
         <button className="primary" type="button" onClick={generate} disabled={busy}>{status === 'error' ? 'もう一度生成する' : status === 'ready' && !stale ? '再生成する' : '音声を生成する'} <span aria-hidden="true">→</span></button>
         <div className="status" role="status" aria-live="polite">
           {status === 'loading' && <><span>音声データを準備しています。初回は時間がかかる場合があります。</span><span className="progress-track" role="progressbar" aria-label="音声モデルの準備中" aria-valuetext="準備中"><span className="progress-indeterminate" /></span></>}
