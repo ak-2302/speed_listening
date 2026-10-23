@@ -1,19 +1,22 @@
 import { type ChangeEvent, type FormEvent, useEffect, useRef, useState } from 'react'
 import { makeWav } from './audio'
 import SpeechWorker from './speech.worker?worker'
-import { materials } from './materials'
+import type { Material } from './materials'
 import './style.css'
 
 type Status = 'idle' | 'loading' | 'generating' | 'ready' | 'error'
 type WorkerResult = { type: 'ready', transferredBytes: number | null } | { type: 'audio', pcm: Float32Array, sampleRate: number } | { type: 'error', message: string }
 type PracticeResult = { materialId: string, completedAt: string, speed: number, score: number, total: number }
 type Mode = 'custom' | 'materials'
+type MaterialIndex = { id: string, title: string, path: string }
 const MAX_LENGTH = 100
 const RESULTS_KEY = 'speed-listening-results'
 
 export default function App() {
   const [text, setText] = useState('')
   const [mode, setMode] = useState<Mode>('custom')
+  const [materials, setMaterials] = useState<Material[]>([])
+  const [materialLoadError, setMaterialLoadError] = useState('')
   const [selectedMaterialId, setSelectedMaterialId] = useState('')
   const [generatedText, setGeneratedText] = useState('')
   const [status, setStatus] = useState<Status>('idle')
@@ -40,6 +43,12 @@ export default function App() {
 
   useEffect(() => {
     fetch(`${base}assets/size.json`).then((response) => response.ok ? response.json() : Promise.reject()).then((data: { bytes: number }) => setSize(data.bytes)).catch(() => {})
+  }, [base])
+  useEffect(() => {
+    fetch(`${base}materials/index.json`).then((response) => response.ok ? response.json() as Promise<MaterialIndex[]> : Promise.reject())
+      .then((index) => Promise.all(index.map((entry) => fetch(`${base}${entry.path}`).then((response) => response.ok ? response.json() as Promise<Material> : Promise.reject()))))
+      .then(setMaterials)
+      .catch(() => setMaterialLoadError('問題集を読み込めませんでした。ページを再読み込みしてください。'))
   }, [base])
   useEffect(() => () => { worker.current?.terminate() }, [])
   useEffect(() => () => { if (audioUrl) URL.revokeObjectURL(audioUrl) }, [audioUrl])
@@ -244,6 +253,7 @@ export default function App() {
       </nav>
       {mode === 'materials' && <section className="materials" aria-labelledby="materials-title">
         <div className="section-heading"><h2 id="materials-title">教材から選ぶ</h2><span>{materials.length}件</span></div>
+        {materialLoadError && <p className="error" role="alert">{materialLoadError}</p>}
         <div className="material-list">
           {materials.map((material) => <button className={`material-card${selectedMaterialId === material.id ? ' selected' : ''}`} type="button" key={material.id} onClick={() => selectMaterial(material.id)}><strong>{material.title}</strong><span>{material.body.length}文字・問題 {material.questions.length}問</span></button>)}
         </div>
