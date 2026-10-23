@@ -1,4 +1,4 @@
-import { type ChangeEvent, useEffect, useRef, useState } from 'react'
+import { type ChangeEvent, type FormEvent, useEffect, useRef, useState } from 'react'
 import { makeWav } from './audio'
 import SpeechWorker from './speech.worker?worker'
 import { materials } from './materials'
@@ -22,6 +22,9 @@ export default function App() {
   const [currentTime, setCurrentTime] = useState(0)
   const [duration, setDuration] = useState(0)
   const [repeat, setRepeat] = useState(false)
+  const [testStarted, setTestStarted] = useState(false)
+  const [answers, setAnswers] = useState<Record<string, string>>({})
+  const [testError, setTestError] = useState('')
   const worker = useRef<Worker | null>(null)
   const audio = useRef<HTMLAudioElement>(null)
   const pendingText = useRef('')
@@ -111,6 +114,9 @@ export default function App() {
     setAudioUrl('')
     setStatus('idle')
     setError('')
+    setTestStarted(false)
+    setAnswers({})
+    setTestError('')
   }
 
   async function togglePlayback() {
@@ -136,6 +142,25 @@ export default function App() {
     const minutes = Math.floor(value / 60)
     const seconds = Math.floor(value % 60).toString().padStart(2, '0')
     return `${minutes}:${seconds}`
+  }
+
+  const selectedMaterial = materials.find((item) => item.id === selectedMaterialId)
+  function startTest() {
+    if (!selectedMaterial || !audioUrl || stale) return
+    setTestStarted(true)
+    setTestError('')
+  }
+
+  function answerQuestion(questionId: string, choiceId: string) {
+    setAnswers((current) => ({ ...current, [questionId]: choiceId }))
+    setTestError('')
+  }
+
+  function submitTest(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    if (!selectedMaterial) return
+    const unanswered = selectedMaterial.questions.filter((question) => !answers[question.id])
+    if (unanswered.length) setTestError(`未回答の問題があります（残り${unanswered.length}問）。`)
   }
 
   const busy = status === 'loading' || status === 'generating'
@@ -180,7 +205,9 @@ export default function App() {
           <input id="speed" type="range" min="1" max="4" step="0.1" value={speed} onChange={(event) => setSpeed(Number(event.target.value))} />
           <div className="speed-scale" aria-hidden="true"><span>1.0倍</span><span>4.0倍</span></div>
         </div>
+        {selectedMaterial && <div className="test-entry"><p className="playback-label">理解度テスト</p><p className="hint">教材を聞いた後、問題に進んで内容を確認できます。</p><button className="secondary" type="button" onClick={startTest} disabled={!audioUrl || stale}>問題に進む</button>{!audioUrl && <p className="hint">先に教材の音声を生成してください。</p>}{stale && <p className="hint">本文を変更したため、再生成してから問題に進んでください。</p>}</div>}
       </section>
+      {testStarted && selectedMaterial && <section className="test-panel" aria-labelledby="test-title"><h2 id="test-title">{selectedMaterial.title}の理解度テスト</h2><p className="hint">各問で一つ選んでください。全問回答すると採点できます。</p><form onSubmit={submitTest}>{selectedMaterial.questions.map((question, index) => <fieldset key={question.id}><legend>{index + 1}. {question.prompt}</legend>{question.choices.map((choice) => <label className="choice" key={choice.id}><input type="radio" name={question.id} value={choice.id} checked={answers[question.id] === choice.id} onChange={() => answerQuestion(question.id, choice.id)} />{choice.text}</label>)}</fieldset>)}{testError && <p className="error" role="alert">{testError}</p>}<button className="primary" type="submit">回答を確認する</button></form></section>}
       <p className="footnote">初回の音声データ取得量：{size ? `約 ${(size / 1024 / 1024).toFixed(1)} MiB（ファイルの合計）` : '確認できません'}。通信量は圧縮やキャッシュにより異なります。{transferredBytes !== null && ` 今回の音声データ取得時の転送量：約 ${(transferredBytes / 1024 / 1024).toFixed(1)} MiB（ブラウザ計測）。`}</p>
     </main>
   )
