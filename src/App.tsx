@@ -6,7 +6,9 @@ import './style.css'
 
 type Status = 'idle' | 'loading' | 'generating' | 'ready' | 'error'
 type WorkerResult = { type: 'ready', transferredBytes: number | null } | { type: 'audio', pcm: Float32Array, sampleRate: number } | { type: 'error', message: string }
+type PracticeResult = { materialId: string, completedAt: string, speed: number, score: number, total: number }
 const MAX_LENGTH = 100
+const RESULTS_KEY = 'speed-listening-results'
 
 export default function App() {
   const [text, setText] = useState('')
@@ -26,6 +28,8 @@ export default function App() {
   const [answers, setAnswers] = useState<Record<string, string>>({})
   const [testError, setTestError] = useState('')
   const [testScore, setTestScore] = useState<number | null>(null)
+  const [history, setHistory] = useState<PracticeResult[]>([])
+  const [storageNotice, setStorageNotice] = useState('')
   const worker = useRef<Worker | null>(null)
   const audio = useRef<HTMLAudioElement>(null)
   const pendingText = useRef('')
@@ -119,6 +123,15 @@ export default function App() {
     setAnswers({})
     setTestError('')
     setTestScore(null)
+    try {
+      const stored = localStorage.getItem(RESULTS_KEY)
+      const records = stored ? JSON.parse(stored) as PracticeResult[] : []
+      setHistory(records.filter((record) => record.materialId === id).sort((a, b) => b.completedAt.localeCompare(a.completedAt)))
+      setStorageNotice('')
+    } catch {
+      setHistory([])
+      setStorageNotice('保存済みの結果を読み込めませんでした。')
+    }
   }
 
   async function togglePlayback() {
@@ -168,13 +181,29 @@ export default function App() {
       return
     }
     setTestError('')
-    setTestScore(selectedMaterial.questions.filter((question) => answers[question.id] === question.answerId).length)
+    const score = selectedMaterial.questions.filter((question) => answers[question.id] === question.answerId).length
+    setTestScore(score)
+    const record: PracticeResult = { materialId: selectedMaterial.id, completedAt: new Date().toISOString(), speed, score, total: selectedMaterial.questions.length }
+    try {
+      const stored = localStorage.getItem(RESULTS_KEY)
+      const records = stored ? JSON.parse(stored) as PracticeResult[] : []
+      const next = [record, ...records].slice(0, 50)
+      localStorage.setItem(RESULTS_KEY, JSON.stringify(next))
+      setHistory(next.filter((item) => item.materialId === selectedMaterial.id))
+      setStorageNotice('今回の結果をこのブラウザに保存しました。')
+    } catch {
+      setStorageNotice('結果を保存できませんでした。今回の採点結果は表示しています。')
+    }
   }
 
   function retryTest() {
     setAnswers({})
     setTestError('')
     setTestScore(null)
+  }
+
+  function formatCompletedAt(value: string) {
+    return new Intl.DateTimeFormat('ja-JP', { dateStyle: 'short', timeStyle: 'short' }).format(new Date(value))
   }
 
   const busy = status === 'loading' || status === 'generating'
@@ -222,6 +251,7 @@ export default function App() {
         {selectedMaterial && <div className="test-entry"><p className="playback-label">理解度テスト</p><p className="hint">教材を聞いた後、問題に進んで内容を確認できます。</p><button className="secondary" type="button" onClick={startTest} disabled={!audioUrl || stale}>問題に進む</button>{!audioUrl && <p className="hint">先に教材の音声を生成してください。</p>}{stale && <p className="hint">本文を変更したため、再生成してから問題に進んでください。</p>}</div>}
       </section>
       {testStarted && selectedMaterial && <section className="test-panel" aria-labelledby="test-title"><h2 id="test-title">{selectedMaterial.title}の理解度テスト</h2>{testScore === null ? <><p className="hint">各問で一つ選んでください。全問回答すると採点できます。</p><form onSubmit={submitTest}>{selectedMaterial.questions.map((question, index) => <fieldset key={question.id}><legend>{index + 1}. {question.prompt}</legend>{question.choices.map((choice) => <label className="choice" key={choice.id}><input type="radio" name={question.id} value={choice.id} checked={answers[question.id] === choice.id} onChange={() => answerQuestion(question.id, choice.id)} />{choice.text}</label>)}</fieldset>)}{testError && <p className="error" role="alert">{testError}</p>}<button className="primary" type="submit">回答を確認する</button></form></> : <><p className="score">正答数：{testScore} / {selectedMaterial.questions.length}</p>{selectedMaterial.questions.map((question, index) => { const selected = question.choices.find((choice) => choice.id === answers[question.id]); const correct = question.choices.find((choice) => choice.id === question.answerId); return <article className="result" key={question.id}><h3>{index + 1}. {question.prompt}</h3><p>あなたの回答：{selected?.text}</p><p>正解：{correct?.text}</p><p>{question.explanation}</p></article>})}<button className="secondary" type="button" onClick={retryTest}>もう一度回答する</button></>}</section>}
+      {selectedMaterial && <section className="history-panel" aria-labelledby="history-title"><h2 id="history-title">過去の結果</h2><p className="hint">このブラウザに保存した、教材「{selectedMaterial.title}」の結果です。ブラウザデータを消去すると失われます。</p>{storageNotice && <p className="storage-notice" role="status">{storageNotice}</p>}{history.length ? <ul className="history-list">{history.map((record) => <li key={record.completedAt}><span>{formatCompletedAt(record.completedAt)}</span><strong>{record.score} / {record.total}</strong><span>{record.speed.toFixed(1)}倍</span></li>)}</ul> : <p className="hint">まだ記録がありません。</p>}</section>}
       <p className="footnote">初回の音声データ取得量：{size ? `約 ${(size / 1024 / 1024).toFixed(1)} MiB（ファイルの合計）` : '確認できません'}。通信量は圧縮やキャッシュにより異なります。{transferredBytes !== null && ` 今回の音声データ取得時の転送量：約 ${(transferredBytes / 1024 / 1024).toFixed(1)} MiB（ブラウザ計測）。`}</p>
     </main>
   )
