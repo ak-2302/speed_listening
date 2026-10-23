@@ -257,11 +257,6 @@ export default function App() {
           <button type="button" className="intro-option" onClick={() => enterMode('materials')}><strong>問題集</strong><span>教材を聞いて、理解度テストに挑戦します。</span></button>
         </div>
       </section></div>}
-      <header className="heading">
-        <p className="eyebrow">LISTENING PRACTICE</p>
-        <h1>文章を、聞いてみる。</h1>
-        <p>好きな文章を入力して、音声で聞く練習を始めましょう。</p>
-      </header>
       <nav className="mode-switch" aria-label="練習モード">
         <button type="button" className={mode === 'custom' ? 'active' : ''} aria-pressed={mode === 'custom'} onClick={() => changeMode('custom')}>自作の文章</button>
         <button type="button" className={mode === 'materials' ? 'active' : ''} aria-pressed={mode === 'materials'} onClick={() => changeMode('materials')}>問題集</button>
