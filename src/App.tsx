@@ -282,8 +282,8 @@ export default function App() {
           {status === 'ready' && !error && (stale ? '文章が変更されています。新しい文章を聞くには、もう一度生成してください。' : '音声の準備ができました。')}
         </div>
         <div className="playback">
-          <div><p className="playback-label" id="playback-title">音声を聞く</p><p className="hint">{audioUrl ? (stale ? '変更前の文章の音声です' : '生成した音声を再生できます') : '音声を準備しています'}</p></div>
-          <button className="play" type="button" disabled={!audioUrl} onClick={togglePlayback}>{playing ? '一時停止' : '再生'}</button>
+          {mode === 'custom' && <div><p className="playback-label" id="playback-title">音声を聞く</p><p className="hint">{audioUrl ? (stale ? '変更前の文章の音声です' : '生成した音声を再生できます') : '音声を準備しています'}</p></div>}
+          <button className={`play${mode === 'materials' ? ' material-play' : ''}`} type="button" disabled={!audioUrl} onClick={togglePlayback}>{mode === 'materials' && !audioUrl ? '音声準備中…' : playing ? '一時停止' : '再生'}</button>
           <audio ref={audio} src={audioUrl || undefined} onLoadedMetadata={(event) => setDuration(event.currentTarget.duration)} onTimeUpdate={(event) => setCurrentTime(event.currentTarget.currentTime)} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onEnded={() => setPlaying(false)} loop={repeat} />
         </div>
         <div className="seek-control">
