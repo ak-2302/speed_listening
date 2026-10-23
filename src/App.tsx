@@ -10,6 +10,7 @@ type PracticeResult = { materialId: string, completedAt: string, speed: number, 
 type Mode = 'custom' | 'materials'
 type MaterialIndex = { id: string, title: string, path: string }
 const MAX_LENGTH = 400
+const MATERIALS_PER_PAGE = 5
 const RESULTS_KEY = 'speed-listening-results'
 
 export default function App() {
@@ -130,7 +131,7 @@ export default function App() {
     const instance = worker.current ?? createWorker()
     if (initialized.current) {
       setStatus('generating')
-      instance.postMessage({ type: 'synthesize', text })
+      instance.postMessage({ type: 'synthesize', text: inputText })
     } else {
       setStatus('loading')
       instance.postMessage({ type: 'initialize', base })
@@ -224,8 +225,8 @@ export default function App() {
   }
 
   const selectedMaterial = materials.find((item) => item.id === selectedMaterialId)
-  const materialPageCount = Math.max(1, Math.ceil(materials.length / 5))
-  const visibleMaterials = materials.slice((materialPage - 1) * 5, materialPage * 5)
+  const materialPageCount = Math.max(1, Math.ceil(materials.length / MATERIALS_PER_PAGE))
+  const visibleMaterials = materials.slice((materialPage - 1) * MATERIALS_PER_PAGE, materialPage * MATERIALS_PER_PAGE)
   function startTest() {
     if (!selectedMaterial || !audioUrl || stale) return
     setTestStarted(true)
@@ -296,9 +297,9 @@ export default function App() {
         {materialPageCount > 1 && <nav className="material-pagination" aria-label="教材一覧のページ"><button type="button" className="secondary" onClick={() => setMaterialPage((page) => Math.max(1, page - 1))} disabled={materialPage === 1}>前へ</button><span>{materialPage} / {materialPageCount}</span><button type="button" className="secondary" onClick={() => setMaterialPage((page) => Math.min(materialPageCount, page + 1))} disabled={materialPage === materialPageCount}>次へ</button></nav>}
       </section>}
       {mode === 'custom' && <section className="workspace" aria-labelledby="input-title">
-        {mode === 'custom' && <><div className="field-heading"><label id="input-title" htmlFor="text">文章</label><span>{text.length} / {MAX_LENGTH} 文字</span></div>
+        <><div className="field-heading"><label id="input-title" htmlFor="text">文章</label><span>{text.length} / {MAX_LENGTH} 文字</span></div>
           <textarea id="text" maxLength={MAX_LENGTH} value={text} onChange={(event) => { setText(event.target.value); setSelectedMaterialId(''); setMode('custom') }} placeholder="ここに日本語の文章を入力、または貼り付けてください。" />
-          <button className="primary" type="button" onClick={() => generate()} disabled={busy}>{status === 'error' ? 'もう一度生成する' : status === 'ready' && !stale ? '再生成する' : '音声を生成する'} <span aria-hidden="true">→</span></button></>}
+          <button className="primary" type="button" onClick={() => generate()} disabled={busy}>{status === 'error' ? 'もう一度生成する' : status === 'ready' && !stale ? '再生成する' : '音声を生成する'} <span aria-hidden="true">→</span></button></>
         {(mode === 'custom' || error) && <div className="status" role="status" aria-live="polite">
           {mode === 'custom' && status === 'generating' && <><span>音声を生成しています…</span><span className="progress-track" role="progressbar" aria-label="音声の生成中" aria-valuetext="生成中"><span className="progress-indeterminate" /></span></>}
           {error && <span className="error">{error}</span>}
