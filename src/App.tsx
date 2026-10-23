@@ -275,12 +275,12 @@ export default function App() {
         {mode === 'custom' && <><div className="field-heading"><label id="input-title" htmlFor="text">文章</label><span>{text.length} / {MAX_LENGTH} 文字</span></div>
           <textarea id="text" maxLength={MAX_LENGTH} value={text} onChange={(event) => { setText(event.target.value); setSelectedMaterialId(''); setMode('custom') }} placeholder="ここに日本語の文章を入力、または貼り付けてください。" />
           <button className="primary" type="button" onClick={() => generate()} disabled={busy}>{status === 'error' ? 'もう一度生成する' : status === 'ready' && !stale ? '再生成する' : '音声を生成する'} <span aria-hidden="true">→</span></button></>}
-        <div className="status" role="status" aria-live="polite">
+        {(mode === 'custom' || error) && <div className="status" role="status" aria-live="polite">
           {mode === 'custom' && status === 'loading' && <><span>音声データを準備しています。初回は時間がかかる場合があります。</span><span className="progress-track" role="progressbar" aria-label="音声モデルの準備中" aria-valuetext="準備中"><span className="progress-indeterminate" /></span></>}
           {mode === 'custom' && status === 'generating' && <><span>音声を生成しています…</span><span className="progress-track" role="progressbar" aria-label="音声の生成中" aria-valuetext="生成中"><span className="progress-indeterminate" /></span></>}
           {error && <span className="error">{error}</span>}
           {mode === 'custom' && status === 'ready' && !error && (stale ? '文章が変更されています。新しい文章を聞くには、もう一度生成してください。' : '音声の準備ができました。')}
-        </div>
+        </div>}
         <div className="playback">
           {mode === 'custom' && <div><p className="playback-label" id="playback-title">音声を聞く</p><p className="hint">{audioUrl ? (stale ? '変更前の文章の音声です' : '生成した音声を再生できます') : '音声を準備しています'}</p></div>}
           <button className={`play${mode === 'materials' ? ' material-play' : ''}`} type="button" disabled={!audioUrl} onClick={togglePlayback}>{mode === 'materials' && !audioUrl ? '音声準備中…' : playing ? '一時停止' : '再生'}</button>
