@@ -7,8 +7,10 @@ button:disabled { cursor: not-allowed; opacity: .48; }
 button:focus-visible, textarea:focus-visible { outline: 3px solid #4f8fd5; outline-offset: 3px; }
 input:focus-visible { outline: 3px solid #4f8fd5; outline-offset: 3px; }
 .page { max-width: 800px; margin: 0 auto; padding: 72px 24px 48px; }
-.top-back { display: block; margin: -16px 0 28px; padding: 0; border: 0; color: #526477; background: transparent; font-size: .86rem; }
+.topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: -16px 0 28px; }
+.top-back { display: block; padding: 0; border: 0; color: #526477; background: transparent; font-size: .86rem; }
 .top-back:hover { color: #235e91; }
+.top-test { white-space: nowrap; }
 .intro-backdrop { position: fixed; z-index: 10; inset: 0; display: grid; place-items: center; padding: 24px; background: #17283bcc; }
 .intro-modal { width: min(100%, 560px); padding: 36px; border: 1px solid #d7e0e3; border-radius: 14px; background: #fff; box-shadow: 0 24px 64px #17283b40; }
 .intro-modal h2 { margin: 12px 0; font-size: 1.45rem; }
@@ -78,8 +80,6 @@ textarea::placeholder { color: #85929c; }
 .secondary { padding: 8px 12px; border: 1px solid #b9c7d0; border-radius: 6px; color: #235e91; background: #fff; }
 .repeat { display: inline-flex; align-items: center; gap: 8px; color: #526477; font-size: .86rem; }
 .test-entry { position: relative; z-index: 6; border-top: 1px solid #e4e9eb; margin-top: 24px; padding-top: 20px; }
-.test-entry-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-.test-entry-heading .playback-label { margin: 0; }
 .test-panel { margin-top: 20px; padding: 28px 32px; border: 1px solid #d7e0e3; border-radius: 12px; background: #fff; }
 .test-panel h2 { margin-bottom: 8px; }
 .test-panel fieldset { margin: 24px 0 0; padding: 16px; border: 1px solid #d7e0e3; border-radius: 8px; }

@@ -277,7 +277,7 @@ export default function App() {
           <button type="button" className="intro-option" onClick={() => enterMode('materials')}><strong>問題集</strong><span>教材を聞いて、理解度テストに挑戦します。</span></button>
         </div>
       </section></div>}
-      <button type="button" className="top-back" onClick={returnToTop}>← トップに戻る</button>
+      <div className="topbar"><button type="button" className="top-back" onClick={returnToTop}>← トップに戻る</button>{mode === 'materials' && selectedMaterial && <button className="secondary top-test" type="button" onClick={startTest} disabled={!audioUrl || stale}>理解度テストに進む</button>}</div>
       {mode === 'materials' && <section className="materials" aria-labelledby="materials-title">
         <div className="section-heading"><h2 id="materials-title">教材から選ぶ</h2><span>{materials.length}件</span></div>
         {materialLoadError && <p className="error" role="alert">{materialLoadError}</p>}
@@ -296,7 +296,7 @@ export default function App() {
           {error && <span className="error">{error}</span>}
           {mode === 'custom' && status === 'ready' && !error && (stale ? '文章が変更されています。新しい文章を聞くには、もう一度生成してください。' : '音声の準備ができました。')}
         </div>}
-        {mode === 'materials' && selectedMaterial && <div className="test-entry"><div className="test-entry-heading"><p className="playback-label">理解度テスト</p><button className="secondary" type="button" onClick={startTest} disabled={!audioUrl || stale}>理解度テストに進む</button></div><p className="hint">教材を聞いた後、問題に進んで内容を確認できます。</p>{!audioUrl && <p className="hint">先に教材の音声を生成してください。</p>}{stale && <p className="hint">本文を変更したため、再生成してから問題に進んでください。</p>}</div>}
+        {mode === 'materials' && selectedMaterial && <div className="test-entry"><p className="playback-label">理解度テスト</p><p className="hint">教材を聞いた後、問題に進んで内容を確認できます。</p>{!audioUrl && <p className="hint">先に教材の音声を生成してください。</p>}{stale && <p className="hint">本文を変更したため、再生成してから問題に進んでください。</p>}</div>}
       </section>
       <aside className="mini-player" aria-label="音声プレイヤー">
         <strong ref={miniTitle} className={`mini-title${titleScrollable ? ' scrollable' : ''}`}><span>{mode === 'materials' && selectedMaterial ? selectedMaterial.title : '自作の文章'}</span></strong>
