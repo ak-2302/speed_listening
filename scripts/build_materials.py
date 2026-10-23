@@ -65,11 +65,14 @@ def validate_materials(materials: list[dict]) -> None:
                 raise ValueError(f"問題文または解説が空です: {question_id}")
 
 
-def synthesize_materials(materials: list[dict], output_dir: Path, open_jtalk: str, dictionary: Path, voice: Path) -> None:
-    """Open JTalkで教材本文をWAVへ変換する。"""
+def synthesize_materials(materials: list[dict], output_dir: Path, open_jtalk: str, ffmpeg: str, dictionary: Path, voice: Path) -> None:
+    """Open JTalkで生成した音声をOpus Oggへ変換する。"""
     command = shutil.which(open_jtalk) or open_jtalk
     if shutil.which(command) is None and not Path(command).exists():
         raise FileNotFoundError(f"Open JTalkが見つかりません: {open_jtalk}")
+    ffmpeg_command = shutil.which(ffmpeg) or ffmpeg
+    if shutil.which(ffmpeg_command) is None and not Path(ffmpeg_command).exists():
+        raise FileNotFoundError(f"FFmpegが見つかりません: {ffmpeg}")
     if not dictionary.is_dir():
         raise FileNotFoundError(f"辞書ディレクトリが見つかりません: {dictionary}")
     if not voice.is_file():
@@ -79,23 +82,25 @@ def synthesize_materials(materials: list[dict], output_dir: Path, open_jtalk: st
         text_dir = Path(temporary_dir)
         for material in materials:
             text_path = text_dir / f"{material['id']}.txt"
-            audio_path = output_dir / f"{material['id']}.wav"
+            wav_path = text_dir / f"{material['id']}.wav"
+            audio_path = output_dir / f"{material['id']}.ogg"
             text_path.write_text(material["body"], encoding="utf-8")
             subprocess.run(
-                [command, "-x", str(dictionary), "-m", str(voice), "-ow", str(audio_path), str(text_path)],
+                [command, "-x", str(dictionary), "-m", str(voice), "-ow", str(wav_path), str(text_path)],
                 check=True,
             )
+            subprocess.run([ffmpeg_command, "-y", "-i", str(wav_path), "-c:a", "libopus", "-b:a", "32k", str(audio_path)], check=True, capture_output=True)
             print(f"生成しました: {audio_path}")
 
 
-def write_material_files(materials: list[dict], output_dir: Path, audio_dir_name: str) -> None:
+def write_material_files(materials: list[dict], output_dir: Path, audio_dir_name: str, audio_extension: str) -> None:
     """教材JSONと一覧JSONを静的配信用ディレクトリへ配置する。"""
     output_dir.mkdir(parents=True, exist_ok=True)
     index = []
     for material in materials:
         material_path = output_dir / f"{material['id']}.json"
         material_path.write_text(json.dumps(material, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-        index.append({"id": material["id"], "title": material["title"], "path": f"{output_dir.name}/{material['id']}.json", "audio": f"{audio_dir_name}/{material['id']}.wav"})
+        index.append({"id": material["id"], "title": material["title"], "path": f"{output_dir.name}/{material['id']}.json", "audio": f"{audio_dir_name}/{material['id']}.{audio_extension}"})
     (output_dir / "index.json").write_text(json.dumps(index, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"JSONを配置しました: {output_dir}（{len(materials)}件）")
 
@@ -105,8 +110,9 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="教材JSONを検証し、Open JTalk音声を生成します。")
     parser.add_argument("input", type=Path, nargs="?", default=DEFAULT_INPUT_DIR, help="教材JSONまたは入力ディレクトリ（省略時: materials）")
     parser.add_argument("--public-dir", type=Path, default=DEFAULT_PUBLIC_DIR, help="静的配信ルート（省略時: public）")
-    parser.add_argument("--output-dir", type=Path, help="WAV出力先（省略時: public/audio）")
+    parser.add_argument("--output-dir", type=Path, help="音声出力先（省略時: public/audio）")
     parser.add_argument("--open-jtalk", default="open_jtalk", help="open_jtalk実行ファイル")
+    parser.add_argument("--ffmpeg", default="ffmpeg", help="FFmpeg実行ファイル")
     parser.add_argument("--dictionary", type=Path, default=DEFAULT_DICTIONARY, help="Open JTalk辞書ディレクトリ")
     parser.add_argument("--voice", type=Path, default=DEFAULT_VOICE, help="HTS voiceファイル")
     parser.add_argument("--validate-only", action="store_true", help="検証だけ行い音声を生成しない")
@@ -125,9 +131,9 @@ def main() -> int:
         print(f"教材JSONを検証しました: {len(materials)}件")
         public_dir = args.public_dir
         audio_dir = args.output_dir or public_dir / "audio"
-        write_material_files(materials, public_dir / "materials", audio_dir.name)
+        write_material_files(materials, public_dir / "materials", audio_dir.name, "ogg")
         if not args.validate_only:
-            synthesize_materials(materials, audio_dir, args.open_jtalk, args.dictionary, args.voice)
+            synthesize_materials(materials, audio_dir, args.open_jtalk, args.ffmpeg, args.dictionary, args.voice)
     except (OSError, ValueError, subprocess.CalledProcessError) as error:
         print(f"エラー: {error}")
         return 1

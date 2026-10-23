@@ -39,6 +39,8 @@ npm run preview
 python3 scripts/build_materials.py
 ```
 
+教材音声はOpen JTalkのWAV一時ファイルをFFmpegでOpus Ogg（32kbps）へ変換して配信します。FFmpegも必要です（macOSでは`brew install ffmpeg`）。
+
 詳細は[ローカル教材作成](docs/ローカル教材作成.md)を参照してください。
 
 ## 音声と配布条件
