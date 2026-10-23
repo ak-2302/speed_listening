@@ -1,5 +1,47 @@
 [
   {
+    "id": "desk-reset",
+    "title": "机まわりを整える習慣",
+    "path": "materials/desk-reset.json",
+    "audio": "audio/desk-reset.ogg"
+  },
+  {
+    "id": "meal-plan",
+    "title": "平日の食事を決める工夫",
+    "path": "materials/meal-plan.json",
+    "audio": "audio/meal-plan.ogg"
+  },
+  {
+    "id": "note-capture",
+    "title": "思いつきを逃さないメモ",
+    "path": "materials/note-capture.json",
+    "audio": "audio/note-capture.ogg"
+  },
+  {
+    "id": "commute-time",
+    "title": "移動時間を学びに変える方法",
+    "path": "materials/commute-time.json",
+    "audio": "audio/commute-time.ogg"
+  },
+  {
+    "id": "sleep-routine",
+    "title": "眠る前の準備を軽くする",
+    "path": "materials/sleep-routine.json",
+    "audio": "audio/sleep-routine.ogg"
+  },
+  {
+    "id": "meeting-summary",
+    "title": "会議の要点を残す方法",
+    "path": "materials/meeting-summary.json",
+    "audio": "audio/meeting-summary.ogg"
+  },
+  {
+    "id": "week-review",
+    "title": "週末に予定を見直す",
+    "path": "materials/week-review.json",
+    "audio": "audio/week-review.ogg"
+  },
+  {
     "id": "daily-focus",
     "title": "集中力を保つ小さな工夫",
     "path": "materials/daily-focus.json",

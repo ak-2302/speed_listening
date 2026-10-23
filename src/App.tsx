@@ -17,6 +17,7 @@ export default function App() {
   const [mode, setMode] = useState<Mode>('custom')
   const [showIntro, setShowIntro] = useState(true)
   const [materials, setMaterials] = useState<Material[]>([])
+  const [materialPage, setMaterialPage] = useState(1)
   const [materialLoadError, setMaterialLoadError] = useState('')
   const [selectedMaterialId, setSelectedMaterialId] = useState('')
   const [generatedText, setGeneratedText] = useState('')
@@ -218,6 +219,8 @@ export default function App() {
   }
 
   const selectedMaterial = materials.find((item) => item.id === selectedMaterialId)
+  const materialPageCount = Math.max(1, Math.ceil(materials.length / 5))
+  const visibleMaterials = materials.slice((materialPage - 1) * 5, materialPage * 5)
   function startTest() {
     if (!selectedMaterial || !audioUrl || stale) return
     setTestStarted(true)
@@ -283,8 +286,9 @@ export default function App() {
         <div className="section-heading"><h2 id="materials-title">教材から選ぶ</h2><span>{materials.length}件</span></div>
         {materialLoadError && <p className="error" role="alert">{materialLoadError}</p>}
         <div className="material-list">
-          {materials.map((material) => <button className={`material-card${selectedMaterialId === material.id ? ' selected' : ''}`} type="button" key={material.id} onClick={() => selectMaterial(material.id)}><strong>{material.title}</strong><span>{material.body.length}文字・問題 {material.questions.length}問</span></button>)}
+          {visibleMaterials.map((material) => <button className={`material-card${selectedMaterialId === material.id ? ' selected' : ''}`} type="button" key={material.id} onClick={() => selectMaterial(material.id)}><strong>{material.title}</strong><span>{material.body.length}文字・問題 {material.questions.length}問</span></button>)}
         </div>
+        {materialPageCount > 1 && <nav className="material-pagination" aria-label="教材一覧のページ"><button type="button" className="secondary" onClick={() => setMaterialPage((page) => Math.max(1, page - 1))} disabled={materialPage === 1}>前へ</button><span>{materialPage} / {materialPageCount}</span><button type="button" className="secondary" onClick={() => setMaterialPage((page) => Math.min(materialPageCount, page + 1))} disabled={materialPage === materialPageCount}>次へ</button></nav>}
       </section>}
       {mode === 'custom' && <section className="workspace" aria-labelledby="input-title">
         {mode === 'custom' && <><div className="field-heading"><label id="input-title" htmlFor="text">文章</label><span>{text.length} / {MAX_LENGTH} 文字</span></div>

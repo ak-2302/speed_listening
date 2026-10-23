@@ -38,6 +38,8 @@ h2 { margin: 0; font-size: 1.15rem; }
 .section-heading { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
 .section-heading > span { color: #657487; font-size: .82rem; }
 .material-list { display: grid; gap: 10px; }
+.material-pagination { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 16px; color: #657487; font-size: .82rem; }
+.material-pagination .secondary { padding: 6px 10px; }
 .material-card { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; width: 100%; padding: 16px; border: 1px solid #c7d2d8; border-radius: 8px; color: #17283b; background: #fff; text-align: left; }
 .material-card:hover, .material-card.selected { border-color: #235e91; background: #f2f7fb; }
 .material-card span { color: #657487; font-size: .82rem; }
