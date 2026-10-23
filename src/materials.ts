@@ -20,7 +20,7 @@ export const materials: Material[] = [
         prompt: '一区切りの作業が終わった後に、次に決めることは何ですか。',
         choices: [{ id: 'a', text: '休憩の予定を増やす' }, { id: 'b', text: '次に取り組むことを一つ決める' }, { id: 'c', text: '作業を最初からやり直す' }],
         answerId: 'b',
-        explanation: '作業後は、次に取り組むことを一つだけ決めると説明しています.',
+        explanation: '作業後は、次に取り組むことを一つだけ決めると説明しています。',
       },
     ],
   },

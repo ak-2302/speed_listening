@@ -25,6 +25,7 @@ export default function App() {
   const [testStarted, setTestStarted] = useState(false)
   const [answers, setAnswers] = useState<Record<string, string>>({})
   const [testError, setTestError] = useState('')
+  const [testScore, setTestScore] = useState<number | null>(null)
   const worker = useRef<Worker | null>(null)
   const audio = useRef<HTMLAudioElement>(null)
   const pendingText = useRef('')
@@ -117,6 +118,7 @@ export default function App() {
     setTestStarted(false)
     setAnswers({})
     setTestError('')
+    setTestScore(null)
   }
 
   async function togglePlayback() {
@@ -149,6 +151,7 @@ export default function App() {
     if (!selectedMaterial || !audioUrl || stale) return
     setTestStarted(true)
     setTestError('')
+    setTestScore(null)
   }
 
   function answerQuestion(questionId: string, choiceId: string) {
@@ -160,7 +163,18 @@ export default function App() {
     event.preventDefault()
     if (!selectedMaterial) return
     const unanswered = selectedMaterial.questions.filter((question) => !answers[question.id])
-    if (unanswered.length) setTestError(`未回答の問題があります（残り${unanswered.length}問）。`)
+    if (unanswered.length) {
+      setTestError(`未回答の問題があります（残り${unanswered.length}問）。`)
+      return
+    }
+    setTestError('')
+    setTestScore(selectedMaterial.questions.filter((question) => answers[question.id] === question.answerId).length)
+  }
+
+  function retryTest() {
+    setAnswers({})
+    setTestError('')
+    setTestScore(null)
   }
 
   const busy = status === 'loading' || status === 'generating'
@@ -207,7 +221,7 @@ export default function App() {
         </div>
         {selectedMaterial && <div className="test-entry"><p className="playback-label">理解度テスト</p><p className="hint">教材を聞いた後、問題に進んで内容を確認できます。</p><button className="secondary" type="button" onClick={startTest} disabled={!audioUrl || stale}>問題に進む</button>{!audioUrl && <p className="hint">先に教材の音声を生成してください。</p>}{stale && <p className="hint">本文を変更したため、再生成してから問題に進んでください。</p>}</div>}
       </section>
-      {testStarted && selectedMaterial && <section className="test-panel" aria-labelledby="test-title"><h2 id="test-title">{selectedMaterial.title}の理解度テスト</h2><p className="hint">各問で一つ選んでください。全問回答すると採点できます。</p><form onSubmit={submitTest}>{selectedMaterial.questions.map((question, index) => <fieldset key={question.id}><legend>{index + 1}. {question.prompt}</legend>{question.choices.map((choice) => <label className="choice" key={choice.id}><input type="radio" name={question.id} value={choice.id} checked={answers[question.id] === choice.id} onChange={() => answerQuestion(question.id, choice.id)} />{choice.text}</label>)}</fieldset>)}{testError && <p className="error" role="alert">{testError}</p>}<button className="primary" type="submit">回答を確認する</button></form></section>}
+      {testStarted && selectedMaterial && <section className="test-panel" aria-labelledby="test-title"><h2 id="test-title">{selectedMaterial.title}の理解度テスト</h2>{testScore === null ? <><p className="hint">各問で一つ選んでください。全問回答すると採点できます。</p><form onSubmit={submitTest}>{selectedMaterial.questions.map((question, index) => <fieldset key={question.id}><legend>{index + 1}. {question.prompt}</legend>{question.choices.map((choice) => <label className="choice" key={choice.id}><input type="radio" name={question.id} value={choice.id} checked={answers[question.id] === choice.id} onChange={() => answerQuestion(question.id, choice.id)} />{choice.text}</label>)}</fieldset>)}{testError && <p className="error" role="alert">{testError}</p>}<button className="primary" type="submit">回答を確認する</button></form></> : <><p className="score">正答数：{testScore} / {selectedMaterial.questions.length}</p>{selectedMaterial.questions.map((question, index) => { const selected = question.choices.find((choice) => choice.id === answers[question.id]); const correct = question.choices.find((choice) => choice.id === question.answerId); return <article className="result" key={question.id}><h3>{index + 1}. {question.prompt}</h3><p>あなたの回答：{selected?.text}</p><p>正解：{correct?.text}</p><p>{question.explanation}</p></article>})}<button className="secondary" type="button" onClick={retryTest}>もう一度回答する</button></>}</section>}
       <p className="footnote">初回の音声データ取得量：{size ? `約 ${(size / 1024 / 1024).toFixed(1)} MiB（ファイルの合計）` : '確認できません'}。通信量は圧縮やキャッシュにより異なります。{transferredBytes !== null && ` 今回の音声データ取得時の転送量：約 ${(transferredBytes / 1024 / 1024).toFixed(1)} MiB（ブラウザ計測）。`}</p>
     </main>
   )

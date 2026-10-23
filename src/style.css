@@ -50,6 +50,10 @@ textarea::placeholder { color: #85929c; }
 .test-panel legend { padding: 0 6px; font-weight: 700; line-height: 1.6; }
 .choice { display: flex; align-items: center; gap: 8px; margin-top: 12px; line-height: 1.5; }
 .test-panel .primary { margin-top: 24px; }
+.score { margin: 20px 0; color: #235e91; font-size: 1.25rem; font-weight: 700; }
+.result { margin-top: 16px; padding: 16px; border-left: 4px solid #235e91; background: #f5f8fa; }
+.result h3 { margin: 0 0 10px; font-size: 1rem; line-height: 1.6; }
+.result p { margin: 6px 0 0; line-height: 1.6; }
 .speed-control { border-top: 1px solid #e4e9eb; margin-top: 24px; padding-top: 20px; }
 .speed-heading, .speed-scale { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
 .speed-heading label { font-weight: 700; }
