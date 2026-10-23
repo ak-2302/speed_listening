@@ -190,6 +190,10 @@ export default function App() {
     setCurrentTime(next)
   }
 
+  function changeSpeed(delta: number) {
+    setSpeed((current) => Math.min(4, Math.max(1, Number((current + delta).toFixed(1)))))
+  }
+
   function resetPlayback() {
     if (audio.current) audio.current.currentTime = 0
     setCurrentTime(0)
@@ -281,23 +285,15 @@ export default function App() {
           {error && <span className="error">{error}</span>}
           {mode === 'custom' && status === 'ready' && !error && (stale ? '文章が変更されています。新しい文章を聞くには、もう一度生成してください。' : '音声の準備ができました。')}
         </div>}
-        <div className={`playback${mode === 'materials' ? ' material-playback' : ''}`}>
-          {mode === 'custom' && <div><p className="playback-label" id="playback-title">音声を聞く</p><p className="hint">{audioUrl ? (stale ? '変更前の文章の音声です' : '生成した音声を再生できます') : '音声を準備しています'}</p></div>}
-          <button className={`play${mode === 'materials' ? ' material-play' : ''}`} type="button" disabled={!audioUrl} onClick={togglePlayback}>{mode === 'materials' && !audioUrl ? '音声準備中…' : playing ? '一時停止' : '再生'}</button>
-          <audio ref={audio} src={audioUrl || undefined} onLoadedMetadata={(event) => setDuration(event.currentTarget.duration)} onTimeUpdate={(event) => setCurrentTime(event.currentTarget.currentTime)} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onEnded={() => setPlaying(false)} loop={repeat} />
-        </div>
-        <div className="seek-control">
-          <div className="seek-heading"><label htmlFor="seek">再生位置</label><span>{formatTime(currentTime)} / {formatTime(duration)}</span></div>
-          <input id="seek" type="range" min="0" max={duration || 0} step="0.01" value={Math.min(currentTime, duration || 0)} onChange={seek} disabled={!audioUrl || !duration} aria-label="再生位置" />
-          <div className="seek-actions"><button type="button" className="secondary" onClick={resetPlayback} disabled={!audioUrl}>先頭に戻る</button><label className="repeat"><input type="checkbox" checked={repeat} onChange={(event) => setRepeat(event.target.checked)} disabled={!audioUrl} /> 全体を繰り返す</label></div>
-        </div>
-        <div className="speed-control">
-          <div className="speed-heading"><label htmlFor="speed">再生速度</label><output htmlFor="speed">{speed.toFixed(1)}倍</output></div>
-          <input id="speed" type="range" min="1" max="4" step="0.1" value={speed} onChange={(event) => setSpeed(Number(event.target.value))} />
-          <div className="speed-scale" aria-hidden="true"><span>1.0倍</span><span>4.0倍</span></div>
-        </div>
         {mode === 'materials' && selectedMaterial && <div className="test-entry"><p className="playback-label">理解度テスト</p><p className="hint">教材を聞いた後、問題に進んで内容を確認できます。</p><button className="secondary" type="button" onClick={startTest} disabled={!audioUrl || stale}>問題に進む</button>{!audioUrl && <p className="hint">先に教材の音声を生成してください。</p>}{stale && <p className="hint">本文を変更したため、再生成してから問題に進んでください。</p>}</div>}
       </section>
+      <aside className="mini-player" aria-label="音声プレイヤー">
+        <strong className="mini-title">{mode === 'materials' && selectedMaterial ? selectedMaterial.title : '自作の文章'}</strong>
+        <div className="mini-actions"><button type="button" className="mini-button" onClick={resetPlayback} disabled={!audioUrl}>最初に戻る</button><button type="button" className="mini-button mini-play" onClick={togglePlayback} disabled={!audioUrl}>{!audioUrl ? '音声準備中…' : playing ? '一時停止' : '再生'}</button><button type="button" className={`mini-button${repeat ? ' selected' : ''}`} onClick={() => setRepeat((current) => !current)} disabled={!audioUrl} aria-pressed={repeat}>繰り返し</button></div>
+        <div className="mini-seek"><span>{formatTime(currentTime)}</span><input id="seek" type="range" min="0" max={duration || 0} step="0.01" value={Math.min(currentTime, duration || 0)} onChange={seek} disabled={!audioUrl || !duration} aria-label="再生位置" /><span>{formatTime(duration)}</span></div>
+        <div className="mini-speed"><button type="button" className="mini-speed-button" onClick={() => changeSpeed(-0.1)} disabled={speed <= 1}>遅く</button><output>{speed.toFixed(1)}倍</output><button type="button" className="mini-speed-button" onClick={() => changeSpeed(0.1)} disabled={speed >= 4}>速く</button></div>
+        <audio ref={audio} src={audioUrl || undefined} onLoadedMetadata={(event) => setDuration(event.currentTarget.duration)} onTimeUpdate={(event) => setCurrentTime(event.currentTarget.currentTime)} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onEnded={() => setPlaying(false)} loop={repeat} />
+      </aside>
       {mode === 'materials' && testStarted && selectedMaterial && <section className="test-panel" aria-labelledby="test-title"><h2 id="test-title">{selectedMaterial.title}の理解度テスト</h2>{testScore === null ? <><p className="hint">各問で一つ選んでください。全問回答すると採点できます。</p><form onSubmit={submitTest}>{selectedMaterial.questions.map((question, index) => <fieldset key={question.id}><legend>{index + 1}. {question.prompt}</legend>{question.choices.map((choice) => <label className="choice" key={choice.id}><input type="radio" name={question.id} value={choice.id} checked={answers[question.id] === choice.id} onChange={() => answerQuestion(question.id, choice.id)} />{choice.text}</label>)}</fieldset>)}{testError && <p className="error" role="alert">{testError}</p>}<button className="primary" type="submit">回答を確認する</button></form></> : <><p className="score">正答数：{testScore} / {selectedMaterial.questions.length}</p>{selectedMaterial.questions.map((question, index) => { const selected = question.choices.find((choice) => choice.id === answers[question.id]); const correct = question.choices.find((choice) => choice.id === question.answerId); return <article className="result" key={question.id}><h3>{index + 1}. {question.prompt}</h3><p>あなたの回答：{selected?.text}</p><p>正解：{correct?.text}</p><p>{question.explanation}</p></article>})}<button className="secondary" type="button" onClick={retryTest}>もう一度回答する</button></>}</section>}
       {mode === 'materials' && selectedMaterial && <section className="history-panel" aria-labelledby="history-title"><h2 id="history-title">過去の結果</h2><p className="hint">このブラウザに保存した、教材「{selectedMaterial.title}」の結果です。ブラウザデータを消去すると失われます。</p>{storageNotice && <p className="storage-notice" role="status">{storageNotice}</p>}{history.length ? <ul className="history-list">{history.map((record) => <li key={record.completedAt}><span>{formatCompletedAt(record.completedAt)}</span><strong>{record.score} / {record.total}</strong><span>{record.speed.toFixed(1)}倍</span></li>)}</ul> : <p className="hint">まだ記録がありません。</p>}</section>}
       <p className="footnote">初回の音声データ取得量：{size ? `約 ${(size / 1024 / 1024).toFixed(1)} MiB（ファイルの合計）` : '確認できません'}。通信量は圧縮やキャッシュにより異なります。{transferredBytes !== null && ` 今回の音声データ取得時の転送量：約 ${(transferredBytes / 1024 / 1024).toFixed(1)} MiB（ブラウザ計測）。`}</p>
