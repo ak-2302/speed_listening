@@ -12,9 +12,11 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run --passWithNoTests"
+    "test": "vitest run --passWithNoTests",
+    "prepare:assets": "node scripts/prepare-assets.mjs"
   },
   "dependencies": {
+    "@keanu-thakalath/openjtalkjs": "0.1.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
   },
