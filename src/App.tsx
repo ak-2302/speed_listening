@@ -149,7 +149,6 @@ export default function App() {
   }
 
   function changeMode(nextMode: Mode) {
-    if (nextMode === mode) return
     audio.current?.pause()
     setPlaying(false)
     setMode(nextMode)
@@ -170,6 +169,12 @@ export default function App() {
   function enterMode(nextMode: Mode) {
     changeMode(nextMode)
     setShowIntro(false)
+  }
+
+  function returnToTop() {
+    audio.current?.pause()
+    setPlaying(false)
+    setShowIntro(true)
   }
 
   async function togglePlayback() {
@@ -257,10 +262,7 @@ export default function App() {
           <button type="button" className="intro-option" onClick={() => enterMode('materials')}><strong>問題集</strong><span>教材を聞いて、理解度テストに挑戦します。</span></button>
         </div>
       </section></div>}
-      <nav className="mode-switch" aria-label="練習モード">
-        <button type="button" className={mode === 'custom' ? 'active' : ''} aria-pressed={mode === 'custom'} onClick={() => changeMode('custom')}>自作の文章</button>
-        <button type="button" className={mode === 'materials' ? 'active' : ''} aria-pressed={mode === 'materials'} onClick={() => changeMode('materials')}>問題集</button>
-      </nav>
+      <button type="button" className="top-back" onClick={returnToTop}>← トップに戻る</button>
       {mode === 'materials' && <section className="materials" aria-labelledby="materials-title">
         <div className="section-heading"><h2 id="materials-title">教材から選ぶ</h2><span>{materials.length}件</span></div>
         {materialLoadError && <p className="error" role="alert">{materialLoadError}</p>}
