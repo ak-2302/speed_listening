@@ -8,6 +8,11 @@ import subprocess
 import tempfile
 from pathlib import Path
 
+ROOT_DIR = Path(__file__).resolve().parent.parent
+DEFAULT_INPUT_DIR = ROOT_DIR / "materials"
+DEFAULT_PUBLIC_DIR = ROOT_DIR / "public"
+DEFAULT_DICTIONARY = DEFAULT_PUBLIC_DIR / "assets" / "dic"
+DEFAULT_VOICE = DEFAULT_PUBLIC_DIR / "assets" / "tohoku-f01-neutral.htsvoice"
 
 def load_materials(path: Path) -> list[dict]:
     """教材JSONを読み込む。"""
@@ -15,6 +20,18 @@ def load_materials(path: Path) -> list[dict]:
         materials = json.load(file)
     if not isinstance(materials, list):
         raise ValueError("教材JSONのルートは配列にしてください。")
+    return materials
+
+
+def load_material_files(input_dir: Path) -> list[dict]:
+    """入力ディレクトリ内の教材JSONをすべて読み込む。"""
+    files = sorted(path for path in input_dir.glob("*.json") if path.name != "index.json")
+    if not files:
+        raise FileNotFoundError(f"教材JSONがありません: {input_dir}")
+    materials = []
+    for path in files:
+        loaded = load_materials(path)
+        materials.extend(loaded)
     return materials
 
 
@@ -71,14 +88,27 @@ def synthesize_materials(materials: list[dict], output_dir: Path, open_jtalk: st
             print(f"生成しました: {audio_path}")
 
 
+def write_material_files(materials: list[dict], output_dir: Path, audio_dir_name: str) -> None:
+    """教材JSONと一覧JSONを静的配信用ディレクトリへ配置する。"""
+    output_dir.mkdir(parents=True, exist_ok=True)
+    index = []
+    for material in materials:
+        material_path = output_dir / f"{material['id']}.json"
+        material_path.write_text(json.dumps(material, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        index.append({"id": material["id"], "title": material["title"], "path": f"{output_dir.name}/{material['id']}.json", "audio": f"{audio_dir_name}/{material['id']}.wav"})
+    (output_dir / "index.json").write_text(json.dumps(index, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"JSONを配置しました: {output_dir}（{len(materials)}件）")
+
+
 def parse_args() -> argparse.Namespace:
     """コマンドライン引数を解析する。"""
     parser = argparse.ArgumentParser(description="教材JSONを検証し、Open JTalk音声を生成します。")
-    parser.add_argument("input", type=Path, help="教材JSONファイル")
-    parser.add_argument("--output-dir", type=Path, help="WAV出力先")
+    parser.add_argument("input", type=Path, nargs="?", default=DEFAULT_INPUT_DIR, help="教材JSONまたは入力ディレクトリ（省略時: materials）")
+    parser.add_argument("--public-dir", type=Path, default=DEFAULT_PUBLIC_DIR, help="静的配信ルート（省略時: public）")
+    parser.add_argument("--output-dir", type=Path, help="WAV出力先（省略時: public/audio）")
     parser.add_argument("--open-jtalk", default="open_jtalk", help="open_jtalk実行ファイル")
-    parser.add_argument("--dictionary", type=Path, help="Open JTalk辞書ディレクトリ")
-    parser.add_argument("--voice", type=Path, help="HTS voiceファイル")
+    parser.add_argument("--dictionary", type=Path, default=DEFAULT_DICTIONARY, help="Open JTalk辞書ディレクトリ")
+    parser.add_argument("--voice", type=Path, default=DEFAULT_VOICE, help="HTS voiceファイル")
     parser.add_argument("--validate-only", action="store_true", help="検証だけ行い音声を生成しない")
     return parser.parse_args()
 
@@ -87,13 +117,17 @@ def main() -> int:
     """CLIを実行する。"""
     args = parse_args()
     try:
-        materials = load_materials(args.input)
+        if args.input.is_dir():
+            materials = load_material_files(args.input)
+        else:
+            materials = load_materials(args.input)
         validate_materials(materials)
         print(f"教材JSONを検証しました: {len(materials)}件")
+        public_dir = args.public_dir
+        audio_dir = args.output_dir or public_dir / "audio"
+        write_material_files(materials, public_dir / "materials", audio_dir.name)
         if not args.validate_only:
-            if not args.output_dir or not args.dictionary or not args.voice:
-                raise ValueError("音声生成には --output-dir、--dictionary、--voice が必要です。")
-            synthesize_materials(materials, args.output_dir, args.open_jtalk, args.dictionary, args.voice)
+            synthesize_materials(materials, audio_dir, args.open_jtalk, args.dictionary, args.voice)
     except (OSError, ValueError, subprocess.CalledProcessError) as error:
         print(f"エラー: {error}")
         return 1
