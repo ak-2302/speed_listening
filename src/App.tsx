@@ -36,7 +36,9 @@ export default function App() {
   const [testScore, setTestScore] = useState<number | null>(null)
   const [history, setHistory] = useState<PracticeResult[]>([])
   const [storageNotice, setStorageNotice] = useState('')
+  const [titleScrollable, setTitleScrollable] = useState(false)
   const worker = useRef<Worker | null>(null)
+  const miniTitle = useRef<HTMLElement>(null)
   const audio = useRef<HTMLAudioElement>(null)
   const pendingText = useRef('')
   const initialized = useRef(false)
@@ -60,6 +62,15 @@ export default function App() {
       audio.current.preservesPitch = true
     }
   }, [speed, audioUrl])
+  useEffect(() => {
+    const element = miniTitle.current
+    if (!element) return
+    const update = () => setTitleScrollable(element.scrollWidth > element.clientWidth)
+    update()
+    const observer = new ResizeObserver(update)
+    observer.observe(element)
+    return () => observer.disconnect()
+  }, [mode, selectedMaterialId])
 
   function createWorker() {
     const instance = new SpeechWorker()
@@ -288,7 +299,7 @@ export default function App() {
         {mode === 'materials' && selectedMaterial && <div className="test-entry"><p className="playback-label">理解度テスト</p><p className="hint">教材を聞いた後、問題に進んで内容を確認できます。</p><button className="secondary" type="button" onClick={startTest} disabled={!audioUrl || stale}>問題に進む</button>{!audioUrl && <p className="hint">先に教材の音声を生成してください。</p>}{stale && <p className="hint">本文を変更したため、再生成してから問題に進んでください。</p>}</div>}
       </section>
       <aside className="mini-player" aria-label="音声プレイヤー">
-        <strong className="mini-title">{mode === 'materials' && selectedMaterial ? selectedMaterial.title : '自作の文章'}</strong>
+        <strong ref={miniTitle} className={`mini-title${titleScrollable ? ' scrollable' : ''}`}><span>{mode === 'materials' && selectedMaterial ? selectedMaterial.title : '自作の文章'}</span></strong>
         <div className="mini-actions"><button type="button" className="mini-button" onClick={resetPlayback} disabled={!audioUrl} aria-label="最初に戻る" title="最初に戻る">⏮</button><button type="button" className="mini-button mini-play" onClick={togglePlayback} disabled={!audioUrl} aria-label={!audioUrl ? '音声準備中' : playing ? '一時停止' : '再生'} title={!audioUrl ? '音声準備中' : playing ? '一時停止' : '再生'}>{!audioUrl ? '…' : playing ? 'Ⅱ' : '▶'}</button><button type="button" className={`mini-button${repeat ? ' selected' : ''}`} onClick={() => setRepeat((current) => !current)} disabled={!audioUrl} aria-pressed={repeat} aria-label="繰り返し" title="繰り返し">↻</button></div>
         <div className="mini-seek"><span>{formatTime(currentTime)}</span><input id="seek" type="range" min="0" max={duration || 0} step="0.01" value={Math.min(currentTime, duration || 0)} onChange={seek} disabled={!audioUrl || !duration} aria-label="再生位置" /><span>{formatTime(duration)}</span></div>
         <div className="mini-speed"><button type="button" className="mini-speed-button" onClick={() => changeSpeed(-0.1)} disabled={speed <= 1} aria-label="再生速度を遅くする" title="再生速度を遅くする">−</button><output>{speed.toFixed(1)}倍</output><button type="button" className="mini-speed-button" onClick={() => changeSpeed(0.1)} disabled={speed >= 4} aria-label="再生速度を速くする" title="再生速度を速くする">＋</button></div>
