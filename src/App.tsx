@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { type ChangeEvent, useEffect, useRef, useState } from 'react'
 import { makeWav } from './audio'
 import SpeechWorker from './speech.worker?worker'
 import './style.css'
@@ -17,6 +17,9 @@ export default function App() {
   const [transferredBytes, setTransferredBytes] = useState<number | null>(null)
   const [playing, setPlaying] = useState(false)
   const [speed, setSpeed] = useState(1)
+  const [currentTime, setCurrentTime] = useState(0)
+  const [duration, setDuration] = useState(0)
+  const [repeat, setRepeat] = useState(false)
   const worker = useRef<Worker | null>(null)
   const audio = useRef<HTMLAudioElement>(null)
   const pendingText = useRef('')
@@ -52,6 +55,8 @@ export default function App() {
           setStatus('error')
           return
         }
+        setCurrentTime(0)
+        setDuration(0)
         setAudioUrl(URL.createObjectURL(makeWav(result.pcm, result.sampleRate)))
         setGeneratedText(pendingText.current)
         setStatus('ready')
@@ -100,6 +105,24 @@ export default function App() {
     try { await player.play() } catch { setError('再生できませんでした。再生ボタンをもう一度押してください。') }
   }
 
+  function seek(event: ChangeEvent<HTMLInputElement>) {
+    const next = Number(event.target.value)
+    if (audio.current) audio.current.currentTime = next
+    setCurrentTime(next)
+  }
+
+  function resetPlayback() {
+    if (audio.current) audio.current.currentTime = 0
+    setCurrentTime(0)
+  }
+
+  function formatTime(value: number) {
+    if (!Number.isFinite(value)) return '0:00'
+    const minutes = Math.floor(value / 60)
+    const seconds = Math.floor(value % 60).toString().padStart(2, '0')
+    return `${minutes}:${seconds}`
+  }
+
   const busy = status === 'loading' || status === 'generating'
   const stale = Boolean(audioUrl && text !== generatedText)
   return (
@@ -123,7 +146,12 @@ export default function App() {
         <div className="playback">
           <div><p className="playback-label">音声を聞く</p><p className="hint">{audioUrl ? (stale ? '変更前の文章の音声です' : '生成した音声を再生できます') : '文章から音声を生成すると再生できます'}</p></div>
           <button className="play" type="button" disabled={!audioUrl} onClick={togglePlayback}>{playing ? '一時停止' : '再生'}</button>
-          <audio ref={audio} src={audioUrl || undefined} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onEnded={() => setPlaying(false)} />
+          <audio ref={audio} src={audioUrl || undefined} onLoadedMetadata={(event) => setDuration(event.currentTarget.duration)} onTimeUpdate={(event) => setCurrentTime(event.currentTarget.currentTime)} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onEnded={() => setPlaying(false)} loop={repeat} />
+        </div>
+        <div className="seek-control">
+          <div className="seek-heading"><label htmlFor="seek">再生位置</label><span>{formatTime(currentTime)} / {formatTime(duration)}</span></div>
+          <input id="seek" type="range" min="0" max={duration || 0} step="0.01" value={Math.min(currentTime, duration || 0)} onChange={seek} disabled={!audioUrl || !duration} aria-label="再生位置" />
+          <div className="seek-actions"><button type="button" className="secondary" onClick={resetPlayback} disabled={!audioUrl}>先頭に戻る</button><label className="repeat"><input type="checkbox" checked={repeat} onChange={(event) => setRepeat(event.target.checked)} disabled={!audioUrl} /> 全体を繰り返す</label></div>
         </div>
         <div className="speed-control">
           <div className="speed-heading"><label htmlFor="speed">再生速度</label><output htmlFor="speed">{speed.toFixed(1)}倍</output></div>
