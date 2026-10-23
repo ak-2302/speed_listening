@@ -16,6 +16,7 @@ export default function App() {
   const [size, setSize] = useState<number>()
   const [transferredBytes, setTransferredBytes] = useState<number | null>(null)
   const [playing, setPlaying] = useState(false)
+  const [speed, setSpeed] = useState(1)
   const worker = useRef<Worker | null>(null)
   const audio = useRef<HTMLAudioElement>(null)
   const pendingText = useRef('')
@@ -27,6 +28,13 @@ export default function App() {
   }, [base])
   useEffect(() => () => { worker.current?.terminate() }, [])
   useEffect(() => () => { if (audioUrl) URL.revokeObjectURL(audioUrl) }, [audioUrl])
+  useEffect(() => {
+    if (audio.current) {
+      audio.current.playbackRate = speed
+      audio.current.defaultPlaybackRate = speed
+      audio.current.preservesPitch = true
+    }
+  }, [speed, audioUrl])
 
   function createWorker() {
     const instance = new SpeechWorker()
@@ -116,6 +124,11 @@ export default function App() {
           <div><p className="playback-label">音声を聞く</p><p className="hint">{audioUrl ? (stale ? '変更前の文章の音声です' : '生成した音声を再生できます') : '文章から音声を生成すると再生できます'}</p></div>
           <button className="play" type="button" disabled={!audioUrl} onClick={togglePlayback}>{playing ? '一時停止' : '再生'}</button>
           <audio ref={audio} src={audioUrl || undefined} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onEnded={() => setPlaying(false)} />
+        </div>
+        <div className="speed-control">
+          <div className="speed-heading"><label htmlFor="speed">再生速度</label><output htmlFor="speed">{speed.toFixed(1)}倍</output></div>
+          <input id="speed" type="range" min="1" max="4" step="0.1" value={speed} onChange={(event) => setSpeed(Number(event.target.value))} />
+          <div className="speed-scale" aria-hidden="true"><span>1.0倍</span><span>4.0倍</span></div>
         </div>
       </section>
       <p className="footnote">初回の音声データ取得量：{size ? `約 ${(size / 1024 / 1024).toFixed(1)} MiB（ファイルの合計）` : '確認できません'}。通信量は圧縮やキャッシュにより異なります。{transferredBytes !== null && ` 今回の音声データ取得時の転送量：約 ${(transferredBytes / 1024 / 1024).toFixed(1)} MiB（ブラウザ計測）。`}</p>
