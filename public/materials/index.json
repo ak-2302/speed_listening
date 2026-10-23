@@ -48,6 +48,36 @@
     "audio": "audio/daily-focus.ogg"
   },
   {
+    "id": "confirmation-bias",
+    "title": "確証バイアスを知る",
+    "path": "materials/confirmation-bias.json",
+    "audio": "audio/confirmation-bias.ogg"
+  },
+  {
+    "id": "dunning-kruger",
+    "title": "知識と自信の関係",
+    "path": "materials/dunning-kruger.json",
+    "audio": "audio/dunning-kruger.ogg"
+  },
+  {
+    "id": "placebo-effect",
+    "title": "プラセボ効果を理解する",
+    "path": "materials/placebo-effect.json",
+    "audio": "audio/placebo-effect.ogg"
+  },
+  {
+    "id": "pareto-principle",
+    "title": "偏りを見つける80対20の考え方",
+    "path": "materials/pareto-principle.json",
+    "audio": "audio/pareto-principle.ogg"
+  },
+  {
+    "id": "entropy",
+    "title": "エントロピーと変化の向き",
+    "path": "materials/entropy.json",
+    "audio": "audio/entropy.ogg"
+  },
+  {
     "id": "morning-walk",
     "title": "朝の散歩を続ける工夫",
     "path": "materials/morning-walk.json",
