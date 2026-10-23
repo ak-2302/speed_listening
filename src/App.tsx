@@ -90,8 +90,8 @@ export default function App() {
     return instance
   }
 
-  function generate() {
-    if (!text.trim()) {
+  function generate(inputText = text) {
+    if (!inputText.trim()) {
       setError('文章を入力してください。')
       setStatus('error')
       return
@@ -99,7 +99,7 @@ export default function App() {
     audio.current?.pause()
     setPlaying(false)
     setError('')
-    pendingText.current = text
+    pendingText.current = inputText
     const instance = worker.current ?? createWorker()
     if (initialized.current) {
       setStatus('generating')
@@ -126,6 +126,7 @@ export default function App() {
     setAnswers({})
     setTestError('')
     setTestScore(null)
+    generate(material.body)
     try {
       const stored = localStorage.getItem(RESULTS_KEY)
       const records = stored ? JSON.parse(stored) as PracticeResult[] : []
@@ -246,12 +247,12 @@ export default function App() {
         <div className="material-list">
           {materials.map((material) => <button className={`material-card${selectedMaterialId === material.id ? ' selected' : ''}`} type="button" key={material.id} onClick={() => selectMaterial(material.id)}><strong>{material.title}</strong><span>{material.body.length}文字・問題 {material.questions.length}問</span></button>)}
         </div>
-        {selectedMaterialId && <p className="hint material-note">教材を選択しました。本文を確認してから音声を生成してください。問題の正解と解説は採点後に表示します。</p>}
+        {selectedMaterialId && <p className="hint material-note">教材を選択しました。音声の準備ができたら再生してください。問題の正解と解説は採点後に表示します。</p>}
       </section>}
-      <section className="workspace" aria-labelledby="input-title">
-        <div className="field-heading"><label id="input-title" htmlFor="text">文章</label><span>{text.length} / {MAX_LENGTH} 文字</span></div>
-        <textarea id="text" maxLength={MAX_LENGTH} value={text} onChange={(event) => { setText(event.target.value); setSelectedMaterialId(''); setMode('custom') }} placeholder={mode === 'custom' ? 'ここに日本語の文章を入力、または貼り付けてください。' : '問題集から教材を選ぶと本文が表示されます。'} />
-        <button className="primary" type="button" onClick={generate} disabled={busy}>{status === 'error' ? 'もう一度生成する' : status === 'ready' && !stale ? '再生成する' : '音声を生成する'} <span aria-hidden="true">→</span></button>
+      <section className="workspace" aria-labelledby={mode === 'custom' ? 'input-title' : 'playback-title'}>
+        {mode === 'custom' && <><div className="field-heading"><label id="input-title" htmlFor="text">文章</label><span>{text.length} / {MAX_LENGTH} 文字</span></div>
+          <textarea id="text" maxLength={MAX_LENGTH} value={text} onChange={(event) => { setText(event.target.value); setSelectedMaterialId(''); setMode('custom') }} placeholder="ここに日本語の文章を入力、または貼り付けてください。" />
+          <button className="primary" type="button" onClick={() => generate()} disabled={busy}>{status === 'error' ? 'もう一度生成する' : status === 'ready' && !stale ? '再生成する' : '音声を生成する'} <span aria-hidden="true">→</span></button></>}
         <div className="status" role="status" aria-live="polite">
           {status === 'loading' && <><span>音声データを準備しています。初回は時間がかかる場合があります。</span><span className="progress-track" role="progressbar" aria-label="音声モデルの準備中" aria-valuetext="準備中"><span className="progress-indeterminate" /></span></>}
           {status === 'generating' && <><span>音声を生成しています…</span><span className="progress-track" role="progressbar" aria-label="音声の生成中" aria-valuetext="生成中"><span className="progress-indeterminate" /></span></>}
@@ -259,7 +260,7 @@ export default function App() {
           {status === 'ready' && !error && (stale ? '文章が変更されています。新しい文章を聞くには、もう一度生成してください。' : '音声の準備ができました。')}
         </div>
         <div className="playback">
-          <div><p className="playback-label">音声を聞く</p><p className="hint">{audioUrl ? (stale ? '変更前の文章の音声です' : '生成した音声を再生できます') : '文章から音声を生成すると再生できます'}</p></div>
+          <div><p className="playback-label" id="playback-title">音声を聞く</p><p className="hint">{audioUrl ? (stale ? '変更前の文章の音声です' : '生成した音声を再生できます') : '音声を準備しています'}</p></div>
           <button className="play" type="button" disabled={!audioUrl} onClick={togglePlayback}>{playing ? '一時停止' : '再生'}</button>
           <audio ref={audio} src={audioUrl || undefined} onLoadedMetadata={(event) => setDuration(event.currentTarget.duration)} onTimeUpdate={(event) => setCurrentTime(event.currentTarget.currentTime)} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onEnded={() => setPlaying(false)} loop={repeat} />
         </div>
