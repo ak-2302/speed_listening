@@ -1,6 +1,7 @@
 import { type ChangeEvent, useEffect, useRef, useState } from 'react'
 import { makeWav } from './audio'
 import SpeechWorker from './speech.worker?worker'
+import { materials } from './materials'
 import './style.css'
 
 type Status = 'idle' | 'loading' | 'generating' | 'ready' | 'error'
@@ -9,6 +10,7 @@ const MAX_LENGTH = 100
 
 export default function App() {
   const [text, setText] = useState('')
+  const [selectedMaterialId, setSelectedMaterialId] = useState('')
   const [generatedText, setGeneratedText] = useState('')
   const [status, setStatus] = useState<Status>('idle')
   const [error, setError] = useState('')
@@ -98,6 +100,19 @@ export default function App() {
     }
   }
 
+  function selectMaterial(id: string) {
+    const material = materials.find((item) => item.id === id)
+    if (!material) return
+    audio.current?.pause()
+    setPlaying(false)
+    setSelectedMaterialId(id)
+    setText(material.body)
+    setGeneratedText('')
+    setAudioUrl('')
+    setStatus('idle')
+    setError('')
+  }
+
   async function togglePlayback() {
     const player = audio.current
     if (!player) return
@@ -132,9 +147,16 @@ export default function App() {
         <h1>文章を、聞いてみる。</h1>
         <p>好きな文章を入力して、音声で聞く練習を始めましょう。</p>
       </header>
+      <section className="materials" aria-labelledby="materials-title">
+        <div className="section-heading"><h2 id="materials-title">教材から選ぶ</h2><span>{materials.length}件</span></div>
+        <div className="material-list">
+          {materials.map((material) => <button className={`material-card${selectedMaterialId === material.id ? ' selected' : ''}`} type="button" key={material.id} onClick={() => selectMaterial(material.id)}><strong>{material.title}</strong><span>{material.body.length}文字・問題 {material.questions.length}問</span></button>)}
+        </div>
+        {selectedMaterialId && <p className="hint material-note">教材を選択しました。本文を確認してから音声を生成してください。問題の正解と解説は採点後に表示します。</p>}
+      </section>
       <section className="workspace" aria-labelledby="input-title">
         <div className="field-heading"><label id="input-title" htmlFor="text">文章</label><span>{text.length} / {MAX_LENGTH} 文字</span></div>
-        <textarea id="text" maxLength={MAX_LENGTH} value={text} onChange={(event) => setText(event.target.value)} placeholder="ここに日本語の文章を入力、または貼り付けてください。" />
+        <textarea id="text" maxLength={MAX_LENGTH} value={text} onChange={(event) => { setText(event.target.value); setSelectedMaterialId('') }} placeholder="ここに日本語の文章を入力、または貼り付けてください。" />
         <p className="hint">入力した文章はこのブラウザ内で音声に変換します。最大 {MAX_LENGTH} 文字は暫定です。</p>
         <button className="primary" type="button" onClick={generate} disabled={busy}>{status === 'error' ? 'もう一度生成する' : '音声を生成する'} <span aria-hidden="true">→</span></button>
         <div className="status" role="status" aria-live="polite">
