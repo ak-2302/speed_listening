@@ -92,7 +92,12 @@ textarea::placeholder { color: #85929c; }
 .choice { display: flex; align-items: center; gap: 8px; margin-top: 12px; line-height: 1.5; }
 .test-panel .primary { margin-top: 24px; }
 .score { margin: 20px 0; color: #235e91; font-size: 1.25rem; font-weight: 700; }
-.result { margin-top: 16px; padding: 16px; border-left: 4px solid #235e91; background: #f5f8fa; }
+.result { margin-top: 16px; padding: 16px; border: 1px solid #d7e0e3; border-left: 5px solid #657487; border-radius: 6px; background: #f5f8fa; }
+.result.correct { border-color: #a8d5bd; border-left-color: #2f8f5b; background: #f0faf4; }
+.result.incorrect { border-color: #e5b8b8; border-left-color: #b13a3a; background: #fff5f5; }
+.result-label { display: inline-block; margin-right: 8px; font-size: .86rem; }
+.result.correct .result-label { color: #237347; }
+.result.incorrect .result-label { color: #a12d2d; }
 .result h3 { margin: 0 0 10px; font-size: 1rem; line-height: 1.6; }
 .result p { margin: 6px 0 0; line-height: 1.6; }
 .history-panel { margin-top: 20px; padding: 24px 32px; border: 1px solid #d7e0e3; border-radius: 12px; background: #fff; }
