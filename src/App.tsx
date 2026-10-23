@@ -15,6 +15,7 @@ const RESULTS_KEY = 'speed-listening-results'
 export default function App() {
   const [text, setText] = useState('')
   const [mode, setMode] = useState<Mode>('custom')
+  const [showIntro, setShowIntro] = useState(true)
   const [materials, setMaterials] = useState<Material[]>([])
   const [materialLoadError, setMaterialLoadError] = useState('')
   const [selectedMaterialId, setSelectedMaterialId] = useState('')
@@ -166,6 +167,11 @@ export default function App() {
     setStorageNotice('')
   }
 
+  function enterMode(nextMode: Mode) {
+    changeMode(nextMode)
+    setShowIntro(false)
+  }
+
   async function togglePlayback() {
     const player = audio.current
     if (!player) return
@@ -242,6 +248,15 @@ export default function App() {
   const stale = Boolean(audioUrl && text !== generatedText)
   return (
     <main className="page">
+      {showIntro && <div className="intro-backdrop"><section className="intro-modal" role="dialog" aria-modal="true" aria-labelledby="intro-title">
+        <p className="eyebrow">LISTENING PRACTICE</p>
+        <h2 id="intro-title">速聴トレーニングへようこそ</h2>
+        <p>文章を耳で聞きながら、聞く速さと理解する力を鍛えられます。使い方を選んで始めてください。</p>
+        <div className="intro-options">
+          <button type="button" className="intro-option" onClick={() => enterMode('custom')}><strong>自作の文章</strong><span>好きな文章を入力して、音声で聞きます。</span></button>
+          <button type="button" className="intro-option" onClick={() => enterMode('materials')}><strong>問題集</strong><span>教材を聞いて、理解度テストに挑戦します。</span></button>
+        </div>
+      </section></div>}
       <header className="heading">
         <p className="eyebrow">LISTENING PRACTICE</p>
         <h1>文章を、聞いてみる。</h1>
