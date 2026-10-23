@@ -9,7 +9,7 @@ type WorkerResult = { type: 'ready', transferredBytes: number | null } | { type:
 type PracticeResult = { materialId: string, completedAt: string, speed: number, score: number, total: number }
 type Mode = 'custom' | 'materials'
 type MaterialIndex = { id: string, title: string, path: string }
-const MAX_LENGTH = 100
+const MAX_LENGTH = 400
 const RESULTS_KEY = 'speed-listening-results'
 
 export default function App() {

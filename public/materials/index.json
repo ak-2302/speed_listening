@@ -58,5 +58,23 @@
     "title": "通知を減らして集中する方法",
     "path": "materials/notification-break.json",
     "audio": "audio/notification-break.ogg"
+  },
+  {
+    "id": "forgetting-curve",
+    "title": "忘れる速さと復習のタイミング",
+    "path": "materials/forgetting-curve.json",
+    "audio": "audio/forgetting-curve.ogg"
+  },
+  {
+    "id": "retrieval-practice",
+    "title": "思い出す練習が学習を助ける",
+    "path": "materials/retrieval-practice.json",
+    "audio": "audio/retrieval-practice.ogg"
+  },
+  {
+    "id": "growth-mindset",
+    "title": "努力と学び方を見直す考え方",
+    "path": "materials/growth-mindset.json",
+    "audio": "audio/growth-mindset.ogg"
   }
 ]
