@@ -61,7 +61,8 @@ globalThis.addEventListener('message', async (event: MessageEvent<SpeechRequest>
       speech = instance
       const resources = performance.getEntriesByType('resource') as PerformanceResourceTiming[]
       const fetched = resources.filter((entry) => entry.name.startsWith(`${base}assets/`))
-      const transferredBytes = fetched.length ? fetched.reduce((sum, entry) => sum + entry.transferSize, 0) : null
+      const measuredBytes = fetched.reduce((sum, entry) => sum + entry.transferSize, 0)
+      const transferredBytes = measuredBytes > 0 ? measuredBytes : null
       globalThis.postMessage({ type: 'ready', transferredBytes })
     } else {
       if (!speech) throw new Error('音声合成の準備ができていません。')
