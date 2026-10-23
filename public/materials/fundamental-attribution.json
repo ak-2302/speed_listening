@@ -1,0 +1,49 @@
+{
+  "id": "fundamental-attribution",
+  "title": "基本的帰属の誤り",
+  "source": "科学・心理学の概念をもとにしたオリジナル要約",
+  "license": "Project Original; summary of research literature",
+  "body": "他人の行動を性格のせいにし、自分の行動は状況のせいにしやすい傾向があります。相手の事情や置かれた状況も考えると、判断の偏りを小さくできます。この考え方は、身近な出来事を観察するときにも役立ちます。ただし、実際の結果は条件や対象によって変わるため、言葉だけで決めつけず、具体的なデータと比べて考えることが大切です。例を一つ見ただけで全体を説明したことにせず、別の例や反対の結果も確認すると、理解をより確かなものにできます。",
+  "questions": [
+    {
+      "id": "fundamental-attribution-1",
+      "prompt": "他人の行動の原因にしやすいもの？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "性格"
+        },
+        {
+          "id": "b",
+          "text": "関係しない情報を選ぶ"
+        },
+        {
+          "id": "c",
+          "text": "何も確認しない"
+        }
+      ],
+      "answerId": "a",
+      "explanation": "性格が本文の要点です。"
+    },
+    {
+      "id": "fundamental-attribution-2",
+      "prompt": "考えるとよいもの？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "相手の状況"
+        },
+        {
+          "id": "b",
+          "text": "最初の印象だけで決める"
+        },
+        {
+          "id": "c",
+          "text": "条件を無視する"
+        }
+      ],
+      "answerId": "a",
+      "explanation": "相手の状況ことが重要です。"
+    }
+  ]
+}

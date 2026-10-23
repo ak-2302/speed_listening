@@ -1,0 +1,242 @@
+[
+  {
+    "id": "confirmation-bias",
+    "title": "確証バイアスを知る",
+    "path": "materials/confirmation-bias.json",
+    "audio": "audio/confirmation-bias.ogg"
+  },
+  {
+    "id": "dunning-kruger",
+    "title": "知識と自信の関係",
+    "path": "materials/dunning-kruger.json",
+    "audio": "audio/dunning-kruger.ogg"
+  },
+  {
+    "id": "placebo-effect",
+    "title": "プラセボ効果を理解する",
+    "path": "materials/placebo-effect.json",
+    "audio": "audio/placebo-effect.ogg"
+  },
+  {
+    "id": "pareto-principle",
+    "title": "偏りを見つける80対20の考え方",
+    "path": "materials/pareto-principle.json",
+    "audio": "audio/pareto-principle.ogg"
+  },
+  {
+    "id": "entropy",
+    "title": "エントロピーと変化の向き",
+    "path": "materials/entropy.json",
+    "audio": "audio/entropy.ogg"
+  },
+  {
+    "id": "newton-laws",
+    "title": "ニュートンの運動法則",
+    "path": "materials/newton-laws.json",
+    "audio": "audio/newton-laws.ogg"
+  },
+  {
+    "id": "inertia",
+    "title": "慣性の法則",
+    "path": "materials/inertia.json",
+    "audio": "audio/inertia.ogg"
+  },
+  {
+    "id": "gravity",
+    "title": "重力と落下",
+    "path": "materials/gravity.json",
+    "audio": "audio/gravity.ogg"
+  },
+  {
+    "id": "archimedes",
+    "title": "浮力の考え方",
+    "path": "materials/archimedes.json",
+    "audio": "audio/archimedes.ogg"
+  },
+  {
+    "id": "ohm-law",
+    "title": "オームの法則",
+    "path": "materials/ohm-law.json",
+    "audio": "audio/ohm-law.ogg"
+  },
+  {
+    "id": "doppler",
+    "title": "ドップラー効果",
+    "path": "materials/doppler.json",
+    "audio": "audio/doppler.ogg"
+  },
+  {
+    "id": "photoelectric",
+    "title": "光電効果",
+    "path": "materials/photoelectric.json",
+    "audio": "audio/photoelectric.ogg"
+  },
+  {
+    "id": "conservation-energy",
+    "title": "エネルギー保存",
+    "path": "materials/conservation-energy.json",
+    "audio": "audio/conservation-energy.ogg"
+  },
+  {
+    "id": "feedback-loop",
+    "title": "フィードバック",
+    "path": "materials/feedback-loop.json",
+    "audio": "audio/feedback-loop.ogg"
+  },
+  {
+    "id": "availability-heuristic",
+    "title": "利用可能性ヒューリスティック",
+    "path": "materials/availability-heuristic.json",
+    "audio": "audio/availability-heuristic.ogg"
+  },
+  {
+    "id": "anchoring",
+    "title": "アンカリング効果",
+    "path": "materials/anchoring.json",
+    "audio": "audio/anchoring.ogg"
+  },
+  {
+    "id": "loss-aversion",
+    "title": "損失回避",
+    "path": "materials/loss-aversion.json",
+    "audio": "audio/loss-aversion.ogg"
+  },
+  {
+    "id": "recency-effect",
+    "title": "新近効果",
+    "path": "materials/recency-effect.json",
+    "audio": "audio/recency-effect.ogg"
+  },
+  {
+    "id": "spacing-effect",
+    "title": "分散学習の効果",
+    "path": "materials/spacing-effect.json",
+    "audio": "audio/spacing-effect.ogg"
+  },
+  {
+    "id": "bystander-effect",
+    "title": "傍観者効果",
+    "path": "materials/bystander-effect.json",
+    "audio": "audio/bystander-effect.ogg"
+  },
+  {
+    "id": "hawthorne-effect",
+    "title": "観察される効果",
+    "path": "materials/hawthorne-effect.json",
+    "audio": "audio/hawthorne-effect.ogg"
+  },
+  {
+    "id": "placebo-nocebo",
+    "title": "ノセボ効果",
+    "path": "materials/placebo-nocebo.json",
+    "audio": "audio/placebo-nocebo.ogg"
+  },
+  {
+    "id": "observer-effect",
+    "title": "観測と対象の変化",
+    "path": "materials/observer-effect.json",
+    "audio": "audio/observer-effect.ogg"
+  },
+  {
+    "id": "critical-mass",
+    "title": "臨界量",
+    "path": "materials/critical-mass.json",
+    "audio": "audio/critical-mass.ogg"
+  },
+  {
+    "id": "survivorship-bias",
+    "title": "生存者バイアス",
+    "path": "materials/survivorship-bias.json",
+    "audio": "audio/survivorship-bias.ogg"
+  },
+  {
+    "id": "regression-mean",
+    "title": "平均への回帰",
+    "path": "materials/regression-mean.json",
+    "audio": "audio/regression-mean.ogg"
+  },
+  {
+    "id": "correlation-causation",
+    "title": "相関と因果",
+    "path": "materials/correlation-causation.json",
+    "audio": "audio/correlation-causation.ogg"
+  },
+  {
+    "id": "double-slit",
+    "title": "二重スリット実験",
+    "path": "materials/double-slit.json",
+    "audio": "audio/double-slit.ogg"
+  },
+  {
+    "id": "uncertainty",
+    "title": "不確定性原理",
+    "path": "materials/uncertainty.json",
+    "audio": "audio/uncertainty.ogg"
+  },
+  {
+    "id": "natural-selection",
+    "title": "自然選択",
+    "path": "materials/natural-selection.json",
+    "audio": "audio/natural-selection.ogg"
+  },
+  {
+    "id": "feedback-negative",
+    "title": "負のフィードバック",
+    "path": "materials/feedback-negative.json",
+    "audio": "audio/feedback-negative.ogg"
+  },
+  {
+    "id": "exponential-growth",
+    "title": "指数関数的な増加",
+    "path": "materials/exponential-growth.json",
+    "audio": "audio/exponential-growth.ogg"
+  },
+  {
+    "id": "law-diminishing-returns",
+    "title": "限界効用逓減",
+    "path": "materials/law-diminishing-returns.json",
+    "audio": "audio/law-diminishing-returns.ogg"
+  },
+  {
+    "id": "sunk-cost",
+    "title": "サンクコスト効果",
+    "path": "materials/sunk-cost.json",
+    "audio": "audio/sunk-cost.ogg"
+  },
+  {
+    "id": "planning-fallacy",
+    "title": "計画錯誤",
+    "path": "materials/planning-fallacy.json",
+    "audio": "audio/planning-fallacy.ogg"
+  },
+  {
+    "id": "peak-end-rule",
+    "title": "ピーク・エンドの法則",
+    "path": "materials/peak-end-rule.json",
+    "audio": "audio/peak-end-rule.ogg"
+  },
+  {
+    "id": "mere-exposure",
+    "title": "単純接触効果",
+    "path": "materials/mere-exposure.json",
+    "audio": "audio/mere-exposure.ogg"
+  },
+  {
+    "id": "self-serving-bias",
+    "title": "自己奉仕バイアス",
+    "path": "materials/self-serving-bias.json",
+    "audio": "audio/self-serving-bias.ogg"
+  },
+  {
+    "id": "fundamental-attribution",
+    "title": "基本的帰属の誤り",
+    "path": "materials/fundamental-attribution.json",
+    "audio": "audio/fundamental-attribution.ogg"
+  },
+  {
+    "id": "choice-overload",
+    "title": "選択肢過多",
+    "path": "materials/choice-overload.json",
+    "audio": "audio/choice-overload.ogg"
+  }
+]
