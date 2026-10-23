@@ -33,7 +33,7 @@ npm run preview
 
 ## 教材JSONと音声の生成
 
-教材JSONを`materials/`に置き、Open JTalkをインストールした環境で次を実行すると、教材JSON・教材音声・`index.json`を`public/`へ配置します。
+教材JSONを`materials/`に置き、Open JTalkをインストールした環境で次を実行すると、教材JSON・教材音声・`index.json`を`public/`へ配置します。macOSでは`brew install open-jtalk`で準備できます。
 
 ```sh
 python3 scripts/build_materials.py
