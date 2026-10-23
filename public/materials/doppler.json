@@ -1,0 +1,49 @@
+{
+  "id": "doppler",
+  "title": "ドップラー効果",
+  "source": "科学・心理学の概念をもとにしたオリジナル要約",
+  "license": "Project Original; summary of research literature",
+  "body": "音を出す側と聞く側の距離が変わると、耳に届く波の間隔が変わります。近づくサイレンが高く、遠ざかる音が低く聞こえる現象をドップラー効果といいます。",
+  "questions": [
+    {
+      "id": "doppler-1",
+      "prompt": "近づく音はどう聞こえる？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "高く聞こえる"
+        },
+        {
+          "id": "b",
+          "text": "関係しない情報を選ぶ"
+        },
+        {
+          "id": "c",
+          "text": "何も確認しない"
+        }
+      ],
+      "answerId": "a",
+      "explanation": "高く聞こえるが本文の要点です。"
+    },
+    {
+      "id": "doppler-2",
+      "prompt": "変化するもの？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "波の間隔"
+        },
+        {
+          "id": "b",
+          "text": "最初の印象だけで決める"
+        },
+        {
+          "id": "c",
+          "text": "条件を無視する"
+        }
+      ],
+      "answerId": "a",
+      "explanation": "波の間隔ことが重要です。"
+    }
+  ]
+}

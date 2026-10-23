@@ -1,0 +1,49 @@
+{
+  "id": "gravity",
+  "title": "重力と落下",
+  "source": "科学・心理学の概念をもとにしたオリジナル要約",
+  "license": "Project Original; summary of research literature",
+  "body": "地球上の物体が下へ落ちるのは、地球が物体を引く重力があるためです。落下の速さを比べるときは、重力だけでなく空気抵抗も考えます。",
+  "questions": [
+    {
+      "id": "gravity-1",
+      "prompt": "物体を下へ引くもの？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "重力"
+        },
+        {
+          "id": "b",
+          "text": "関係しない情報を選ぶ"
+        },
+        {
+          "id": "c",
+          "text": "何も確認しない"
+        }
+      ],
+      "answerId": "a",
+      "explanation": "重力が本文の要点です。"
+    },
+    {
+      "id": "gravity-2",
+      "prompt": "落下を遅くすることがあるもの？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "空気抵抗"
+        },
+        {
+          "id": "b",
+          "text": "最初の印象だけで決める"
+        },
+        {
+          "id": "c",
+          "text": "条件を無視する"
+        }
+      ],
+      "answerId": "a",
+      "explanation": "空気抵抗ことが重要です。"
+    }
+  ]
+}

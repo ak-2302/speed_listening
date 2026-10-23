@@ -1,0 +1,49 @@
+{
+  "id": "regression-mean",
+  "title": "平均への回帰",
+  "source": "科学・心理学の概念をもとにしたオリジナル要約",
+  "license": "Project Original; summary of research literature",
+  "body": "極端に高い結果や低い結果の次には、平均に近い結果が出やすくなることがあります。複数回測定して比較すると、偶然と効果を分けやすくなります。",
+  "questions": [
+    {
+      "id": "regression-mean-1",
+      "prompt": "次に出やすい結果？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "平均に近い結果"
+        },
+        {
+          "id": "b",
+          "text": "関係しない情報を選ぶ"
+        },
+        {
+          "id": "c",
+          "text": "何も確認しない"
+        }
+      ],
+      "answerId": "a",
+      "explanation": "平均に近い結果が本文の要点です。"
+    },
+    {
+      "id": "regression-mean-2",
+      "prompt": "効果を確かめる方法？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "複数回の比較"
+        },
+        {
+          "id": "b",
+          "text": "最初の印象だけで決める"
+        },
+        {
+          "id": "c",
+          "text": "条件を無視する"
+        }
+      ],
+      "answerId": "a",
+      "explanation": "複数回の比較ことが重要です。"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "id": "correlation-causation",
+  "title": "相関と因果",
+  "source": "科学・心理学の概念をもとにしたオリジナル要約",
+  "license": "Project Original; summary of research literature",
+  "body": "二つの出来事が同時に増減しても、一方が他方の原因とは限りません。第三の要因や別の説明を調べ、条件を比べる必要があります。",
+  "questions": [
+    {
+      "id": "correlation-causation-1",
+      "prompt": "同時に増減しても何とは限らない？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "原因と結果の関係"
+        },
+        {
+          "id": "b",
+          "text": "関係しない情報を選ぶ"
+        },
+        {
+          "id": "c",
+          "text": "何も確認しない"
+        }
+      ],
+      "answerId": "a",
+      "explanation": "原因と結果の関係が本文の要点です。"
+    },
+    {
+      "id": "correlation-causation-2",
+      "prompt": "原因を確かめるもの？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "別の説明や条件"
+        },
+        {
+          "id": "b",
+          "text": "最初の印象だけで決める"
+        },
+        {
+          "id": "c",
+          "text": "条件を無視する"
+        }
+      ],
+      "answerId": "a",
+      "explanation": "別の説明や条件ことが重要です。"
+    }
+  ]
+}

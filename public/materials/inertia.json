@@ -1,0 +1,49 @@
+{
+  "id": "inertia",
+  "title": "慣性の法則",
+  "source": "科学・心理学の概念をもとにしたオリジナル要約",
+  "license": "Project Original; summary of research literature",
+  "body": "急発進や急停止で体が傾くのは、体がそれまでの動きを保とうとするためです。この性質を慣性といいます。外から力を受けると、物体の速さや向きが変わります。",
+  "questions": [
+    {
+      "id": "inertia-1",
+      "prompt": "体が傾く理由？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "それまでの動きを保つため"
+        },
+        {
+          "id": "b",
+          "text": "関係しない情報を選ぶ"
+        },
+        {
+          "id": "c",
+          "text": "何も確認しない"
+        }
+      ],
+      "answerId": "a",
+      "explanation": "それまでの動きを保つためが本文の要点です。"
+    },
+    {
+      "id": "inertia-2",
+      "prompt": "動きを変えるもの？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "外からの力"
+        },
+        {
+          "id": "b",
+          "text": "最初の印象だけで決める"
+        },
+        {
+          "id": "c",
+          "text": "条件を無視する"
+        }
+      ],
+      "answerId": "a",
+      "explanation": "外からの力ことが重要です。"
+    }
+  ]
+}

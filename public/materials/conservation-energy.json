@@ -1,0 +1,49 @@
+{
+  "id": "conservation-energy",
+  "title": "エネルギー保存",
+  "source": "科学・心理学の概念をもとにしたオリジナル要約",
+  "license": "Project Original; summary of research literature",
+  "body": "エネルギーは形を変えても、閉じた系全体では増えたり消えたりしません。位置エネルギーは運動エネルギーや熱に変わります。",
+  "questions": [
+    {
+      "id": "conservation-energy-1",
+      "prompt": "エネルギーはどうなる？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "形を変えて保存される"
+        },
+        {
+          "id": "b",
+          "text": "関係しない情報を選ぶ"
+        },
+        {
+          "id": "c",
+          "text": "何も確認しない"
+        }
+      ],
+      "answerId": "a",
+      "explanation": "形を変えて保存されるが本文の要点です。"
+    },
+    {
+      "id": "conservation-energy-2",
+      "prompt": "落下で変わるもの？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "運動エネルギー"
+        },
+        {
+          "id": "b",
+          "text": "最初の印象だけで決める"
+        },
+        {
+          "id": "c",
+          "text": "条件を無視する"
+        }
+      ],
+      "answerId": "a",
+      "explanation": "運動エネルギーことが重要です。"
+    }
+  ]
+}

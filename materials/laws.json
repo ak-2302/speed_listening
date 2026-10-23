@@ -1,0 +1,1325 @@
+[
+  {
+    "id": "confirmation-bias",
+    "title": "確証バイアスを知る",
+    "source": "心理学で研究されている確証バイアスをもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "人は、自分が正しいと思っている情報を集め、反対の情報を軽く扱ってしまうことがあります。これは確証バイアスと呼ばれる傾向です。思い込みを減らすには、賛成する証拠だけでなく、反対の例や別の説明も探します。結論を急がず、情報の出どころと調べた方法を確認すると、判断を見直しやすくなります。",
+    "questions": [
+      {
+        "id": "confirmation-bias-1",
+        "prompt": "確証バイアスとはどのような傾向ですか。",
+        "choices": [
+          {
+            "id": "a",
+            "text": "自分に合う情報を集めやすい傾向"
+          },
+          {
+            "id": "b",
+            "text": "情報を必ず均等に扱う方法"
+          },
+          {
+            "id": "c",
+            "text": "記憶をすべて消す現象"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "自分が正しいと思う情報を集め、反対の情報を軽く扱いやすい傾向です。"
+      },
+      {
+        "id": "confirmation-bias-2",
+        "prompt": "思い込みを減らすために何を探しますか。",
+        "choices": [
+          {
+            "id": "a",
+            "text": "反対の例や別の説明"
+          },
+          {
+            "id": "b",
+            "text": "賛成する情報だけ"
+          },
+          {
+            "id": "c",
+            "text": "出どころが不明な情報"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "反対の例や別の説明を探すことが役立ちます。"
+      }
+    ]
+  },
+  {
+    "id": "dunning-kruger",
+    "title": "知識と自信の関係",
+    "source": "Dunning and Kruger (1999) の研究をもとにしたオリジナル要約",
+    "license": "Project Original; summary of cited research",
+    "body": "ある分野を学び始めたばかりのとき、自分が何を知らないのかも分かりにくいことがあります。そのため、実際の力と自信の大きさが一致しない場合があります。学習を続けて知識が増えると、自分の弱い部分も見つけやすくなります。テストや他者からの具体的なフィードバックを使うと、自分の理解を確かめながら学べます。",
+    "questions": [
+      {
+        "id": "dunning-kruger-1",
+        "prompt": "学び始めたばかりの時期に起こりやすいことは何ですか。",
+        "choices": [
+          {
+            "id": "a",
+            "text": "知らないことに気づきにくい"
+          },
+          {
+            "id": "b",
+            "text": "必ず正確に自己評価できる"
+          },
+          {
+            "id": "c",
+            "text": "学習が不要になる"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "初学者は自分が何を知らないのか分かりにくい場合があります。"
+      },
+      {
+        "id": "dunning-kruger-2",
+        "prompt": "理解を確かめるために役立つものは何ですか。",
+        "choices": [
+          {
+            "id": "a",
+            "text": "テストや具体的なフィードバック"
+          },
+          {
+            "id": "b",
+            "text": "自信だけを高めること"
+          },
+          {
+            "id": "c",
+            "text": "確認せずに進むこと"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "テストや他者からの具体的なフィードバックが役立ちます。"
+      }
+    ]
+  },
+  {
+    "id": "placebo-effect",
+    "title": "プラセボ効果を理解する",
+    "source": "医学・心理学で研究されているプラセボ効果をもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "治療を受けたと信じることで、痛みや感じ方が変わることがあります。このような心身の反応はプラセボ効果として研究されています。ただし、気持ちの変化だけで病気の原因が治るとは限りません。治療の効果を調べるときは、期待だけの影響と治療そのものの効果を分けて比べる工夫が必要です。",
+    "questions": [
+      {
+        "id": "placebo-effect-1",
+        "prompt": "プラセボ効果では何が変わることがありますか。",
+        "choices": [
+          {
+            "id": "a",
+            "text": "痛みや感じ方"
+          },
+          {
+            "id": "b",
+            "text": "すべての病気の原因"
+          },
+          {
+            "id": "c",
+            "text": "薬の成分そのもの"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "治療を受けたと信じることで、痛みや感じ方が変わることがあります。"
+      },
+      {
+        "id": "placebo-effect-2",
+        "prompt": "治療の効果を調べるとき、何を分けて考えますか。",
+        "choices": [
+          {
+            "id": "a",
+            "text": "期待の影響と治療そのものの効果"
+          },
+          {
+            "id": "b",
+            "text": "患者の年齢だけ"
+          },
+          {
+            "id": "c",
+            "text": "薬の名前と色"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "期待だけの影響と治療そのものの効果を分けて比べます。"
+      }
+    ]
+  },
+  {
+    "id": "pareto-principle",
+    "title": "偏りを見つける80対20の考え方",
+    "source": "Vilfredo Paretoの観察をもとにした80対20の考え方のオリジナル要約",
+    "license": "Project Original; summary of a historical observation",
+    "body": "80対20の考え方は、多くの結果が少数の原因に偏っていることがある、という見方です。たとえば、作業の成果の多くを一部の重要な行動が生む場合があります。ただし、80と20がいつも正確に成り立つ法則ではありません。どの活動が結果に大きく関係しているかを調べ、限られた時間を優先順位の高い活動に使うための考え方です。",
+    "questions": [
+      {
+        "id": "pareto-principle-1",
+        "prompt": "80対20の考え方が示すものは何ですか。",
+        "choices": [
+          {
+            "id": "a",
+            "text": "結果が少数の原因に偏ることがある"
+          },
+          {
+            "id": "b",
+            "text": "必ず80と20になること"
+          },
+          {
+            "id": "c",
+            "text": "原因を調べない方法"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "多くの結果が少数の原因に偏ることがある、という見方です。"
+      },
+      {
+        "id": "pareto-principle-2",
+        "prompt": "この考え方を使うときに必要なことは何ですか。",
+        "choices": [
+          {
+            "id": "a",
+            "text": "重要な活動を調べる"
+          },
+          {
+            "id": "b",
+            "text": "数字を必ず固定する"
+          },
+          {
+            "id": "c",
+            "text": "すべての活動を同じに扱う"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "結果に大きく関係する活動を調べ、優先順位を考えます。"
+      }
+    ]
+  },
+  {
+    "id": "entropy",
+    "title": "エントロピーと変化の向き",
+    "source": "熱力学の第二法則をもとにしたオリジナル要約",
+    "license": "Project Original; summary of an introductory scientific concept",
+    "body": "エントロピーは、ものの状態がどれだけ広がりやすいかを考える量の一つです。熱力学では、外からエネルギーを加えない閉じた系では、全体のエントロピーが増える向きに変化が進みやすいと説明されます。部屋が自然に散らかりやすく、片付いた状態を保つには仕事が必要なのも、変化の向きの身近な例です。これは何もかもが必ず一方向に変わるという意味ではありません。",
+    "questions": [
+      {
+        "id": "entropy-1",
+        "prompt": "エントロピーは何を考える量の一つですか。",
+        "choices": [
+          {
+            "id": "a",
+            "text": "状態の広がりやすさ"
+          },
+          {
+            "id": "b",
+            "text": "物体の色だけ"
+          },
+          {
+            "id": "c",
+            "text": "時間の長さだけ"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "ものの状態がどれだけ広がりやすいかを考える量の一つです。"
+      },
+      {
+        "id": "entropy-2",
+        "prompt": "片付いた部屋を保つには何が必要ですか。",
+        "choices": [
+          {
+            "id": "a",
+            "text": "仕事や手入れ"
+          },
+          {
+            "id": "b",
+            "text": "何もしないこと"
+          },
+          {
+            "id": "c",
+            "text": "部屋を閉じるだけ"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "片付いた状態を保つには仕事が必要だという身近な例を示しています。"
+      }
+    ]
+  },
+  {
+    "id": "newton-laws",
+    "title": "ニュートンの運動法則",
+    "source": "科学・心理学の概念をもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "物体の動きは力によって変わります。力が加わらなければ動きは保たれ、力が大きいほど動きの変化も大きくなります。重い物体ほど同じ力では動きにくくなります。",
+    "questions": [
+      {
+        "id": "newton-laws-1",
+        "prompt": "力がなければ動きはどうなる？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "保たれる"
+          },
+          {
+            "id": "b",
+            "text": "関係しない情報を選ぶ"
+          },
+          {
+            "id": "c",
+            "text": "何も確認しない"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "保たれるが本文の要点です。"
+      },
+      {
+        "id": "newton-laws-2",
+        "prompt": "動きの変化を大きくするもの？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "大きな力"
+          },
+          {
+            "id": "b",
+            "text": "最初の印象だけで決める"
+          },
+          {
+            "id": "c",
+            "text": "条件を無視する"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "大きな力ことが重要です。"
+      }
+    ]
+  },
+  {
+    "id": "inertia",
+    "title": "慣性の法則",
+    "source": "科学・心理学の概念をもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "急発進や急停止で体が傾くのは、体がそれまでの動きを保とうとするためです。この性質を慣性といいます。外から力を受けると、物体の速さや向きが変わります。",
+    "questions": [
+      {
+        "id": "inertia-1",
+        "prompt": "体が傾く理由？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "それまでの動きを保つため"
+          },
+          {
+            "id": "b",
+            "text": "関係しない情報を選ぶ"
+          },
+          {
+            "id": "c",
+            "text": "何も確認しない"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "それまでの動きを保つためが本文の要点です。"
+      },
+      {
+        "id": "inertia-2",
+        "prompt": "動きを変えるもの？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "外からの力"
+          },
+          {
+            "id": "b",
+            "text": "最初の印象だけで決める"
+          },
+          {
+            "id": "c",
+            "text": "条件を無視する"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "外からの力ことが重要です。"
+      }
+    ]
+  },
+  {
+    "id": "gravity",
+    "title": "重力と落下",
+    "source": "科学・心理学の概念をもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "地球上の物体が下へ落ちるのは、地球が物体を引く重力があるためです。落下の速さを比べるときは、重力だけでなく空気抵抗も考えます。",
+    "questions": [
+      {
+        "id": "gravity-1",
+        "prompt": "物体を下へ引くもの？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "重力"
+          },
+          {
+            "id": "b",
+            "text": "関係しない情報を選ぶ"
+          },
+          {
+            "id": "c",
+            "text": "何も確認しない"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "重力が本文の要点です。"
+      },
+      {
+        "id": "gravity-2",
+        "prompt": "落下を遅くすることがあるもの？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "空気抵抗"
+          },
+          {
+            "id": "b",
+            "text": "最初の印象だけで決める"
+          },
+          {
+            "id": "c",
+            "text": "条件を無視する"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "空気抵抗ことが重要です。"
+      }
+    ]
+  },
+  {
+    "id": "archimedes",
+    "title": "浮力の考え方",
+    "source": "科学・心理学の概念をもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "水中の物体が軽く感じるのは、水から上向きの浮力を受けるためです。物体が押しのける水の量が多いほど、浮力も大きくなります。",
+    "questions": [
+      {
+        "id": "archimedes-1",
+        "prompt": "上向きの力の名前？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "浮力"
+          },
+          {
+            "id": "b",
+            "text": "関係しない情報を選ぶ"
+          },
+          {
+            "id": "c",
+            "text": "何も確認しない"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "浮力が本文の要点です。"
+      },
+      {
+        "id": "archimedes-2",
+        "prompt": "浮力を大きくするもの？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "押しのける水の量"
+          },
+          {
+            "id": "b",
+            "text": "最初の印象だけで決める"
+          },
+          {
+            "id": "c",
+            "text": "条件を無視する"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "押しのける水の量ことが重要です。"
+      }
+    ]
+  },
+  {
+    "id": "ohm-law",
+    "title": "オームの法則",
+    "source": "科学・心理学の概念をもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "電圧は電流を押し出し、抵抗は電流の流れにくさを表します。電圧が同じなら、抵抗が大きいほど電流は小さくなります。",
+    "questions": [
+      {
+        "id": "ohm-law-1",
+        "prompt": "流れにくさを表すもの？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "抵抗"
+          },
+          {
+            "id": "b",
+            "text": "関係しない情報を選ぶ"
+          },
+          {
+            "id": "c",
+            "text": "何も確認しない"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "抵抗が本文の要点です。"
+      },
+      {
+        "id": "ohm-law-2",
+        "prompt": "抵抗が大きいと電流は？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "小さくなる"
+          },
+          {
+            "id": "b",
+            "text": "最初の印象だけで決める"
+          },
+          {
+            "id": "c",
+            "text": "条件を無視する"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "小さくなることが重要です。"
+      }
+    ]
+  },
+  {
+    "id": "doppler",
+    "title": "ドップラー効果",
+    "source": "科学・心理学の概念をもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "音を出す側と聞く側の距離が変わると、耳に届く波の間隔が変わります。近づくサイレンが高く、遠ざかる音が低く聞こえる現象をドップラー効果といいます。",
+    "questions": [
+      {
+        "id": "doppler-1",
+        "prompt": "近づく音はどう聞こえる？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "高く聞こえる"
+          },
+          {
+            "id": "b",
+            "text": "関係しない情報を選ぶ"
+          },
+          {
+            "id": "c",
+            "text": "何も確認しない"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "高く聞こえるが本文の要点です。"
+      },
+      {
+        "id": "doppler-2",
+        "prompt": "変化するもの？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "波の間隔"
+          },
+          {
+            "id": "b",
+            "text": "最初の印象だけで決める"
+          },
+          {
+            "id": "c",
+            "text": "条件を無視する"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "波の間隔ことが重要です。"
+      }
+    ]
+  },
+  {
+    "id": "photoelectric",
+    "title": "光電効果",
+    "source": "科学・心理学の概念をもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "金属に十分な振動数の光を当てると、電子が飛び出すことがあります。明るさだけでなく、光の色や振動数が重要です。",
+    "questions": [
+      {
+        "id": "photoelectric-1",
+        "prompt": "電子を出す光で重要な性質？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "振動数"
+          },
+          {
+            "id": "b",
+            "text": "関係しない情報を選ぶ"
+          },
+          {
+            "id": "c",
+            "text": "何も確認しない"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "振動数が本文の要点です。"
+      },
+      {
+        "id": "photoelectric-2",
+        "prompt": "明るくするだけで必ず出るか？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "出ない場合がある"
+          },
+          {
+            "id": "b",
+            "text": "最初の印象だけで決める"
+          },
+          {
+            "id": "c",
+            "text": "条件を無視する"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "出ない場合があることが重要です。"
+      }
+    ]
+  },
+  {
+    "id": "conservation-energy",
+    "title": "エネルギー保存",
+    "source": "科学・心理学の概念をもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "エネルギーは形を変えても、閉じた系全体では増えたり消えたりしません。位置エネルギーは運動エネルギーや熱に変わります。",
+    "questions": [
+      {
+        "id": "conservation-energy-1",
+        "prompt": "エネルギーはどうなる？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "形を変えて保存される"
+          },
+          {
+            "id": "b",
+            "text": "関係しない情報を選ぶ"
+          },
+          {
+            "id": "c",
+            "text": "何も確認しない"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "形を変えて保存されるが本文の要点です。"
+      },
+      {
+        "id": "conservation-energy-2",
+        "prompt": "落下で変わるもの？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "運動エネルギー"
+          },
+          {
+            "id": "b",
+            "text": "最初の印象だけで決める"
+          },
+          {
+            "id": "c",
+            "text": "条件を無視する"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "運動エネルギーことが重要です。"
+      }
+    ]
+  },
+  {
+    "id": "feedback-loop",
+    "title": "フィードバック",
+    "source": "科学・心理学の概念をもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "結果を見て次の行動を調整する仕組みをフィードバックといいます。ずれを小さくする負のフィードバックや、変化を大きくする正のフィードバックがあります。",
+    "questions": [
+      {
+        "id": "feedback-loop-1",
+        "prompt": "結果を見て何をする？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "次の行動を調整する"
+          },
+          {
+            "id": "b",
+            "text": "関係しない情報を選ぶ"
+          },
+          {
+            "id": "c",
+            "text": "何も確認しない"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "次の行動を調整するが本文の要点です。"
+      },
+      {
+        "id": "feedback-loop-2",
+        "prompt": "ずれを小さくする種類？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "負のフィードバック"
+          },
+          {
+            "id": "b",
+            "text": "最初の印象だけで決める"
+          },
+          {
+            "id": "c",
+            "text": "条件を無視する"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "負のフィードバックことが重要です。"
+      }
+    ]
+  },
+  {
+    "id": "availability-heuristic",
+    "title": "利用可能性ヒューリスティック",
+    "source": "科学・心理学の概念をもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "すぐ思い出せる出来事を、実際より起こりやすいと判断することがあります。印象だけでなく統計や基準も確認すると、判断の偏りを抑えられます。",
+    "questions": [
+      {
+        "id": "availability-heuristic-1",
+        "prompt": "思い出しやすい出来事をどう判断する？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "起こりやすいと判断する"
+          },
+          {
+            "id": "b",
+            "text": "関係しない情報を選ぶ"
+          },
+          {
+            "id": "c",
+            "text": "何も確認しない"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "起こりやすいと判断するが本文の要点です。"
+      },
+      {
+        "id": "availability-heuristic-2",
+        "prompt": "偏りを抑えるもの？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "統計や基準"
+          },
+          {
+            "id": "b",
+            "text": "最初の印象だけで決める"
+          },
+          {
+            "id": "c",
+            "text": "条件を無視する"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "統計や基準ことが重要です。"
+      }
+    ]
+  },
+  {
+    "id": "anchoring",
+    "title": "アンカリング効果",
+    "source": "科学・心理学の概念をもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "最初に見た数字や情報が、その後の判断の基準になってしまうことがあります。別の基準や相場を調べると、最初の印象を見直せます。",
+    "questions": [
+      {
+        "id": "anchoring-1",
+        "prompt": "最初の情報は何になりやすい？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "判断の基準"
+          },
+          {
+            "id": "b",
+            "text": "関係しない情報を選ぶ"
+          },
+          {
+            "id": "c",
+            "text": "何も確認しない"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "判断の基準が本文の要点です。"
+      },
+      {
+        "id": "anchoring-2",
+        "prompt": "見直すために調べるもの？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "別の基準や相場"
+          },
+          {
+            "id": "b",
+            "text": "最初の印象だけで決める"
+          },
+          {
+            "id": "c",
+            "text": "条件を無視する"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "別の基準や相場ことが重要です。"
+      }
+    ]
+  },
+  {
+    "id": "loss-aversion",
+    "title": "損失回避",
+    "source": "科学・心理学の概念をもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "人は同じ大きさの利益より、損失の痛みを強く感じることがあります。選択肢を比べるときは、得失と確率を分けて考えます。",
+    "questions": [
+      {
+        "id": "loss-aversion-1",
+        "prompt": "強く感じやすいもの？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "損失の痛み"
+          },
+          {
+            "id": "b",
+            "text": "関係しない情報を選ぶ"
+          },
+          {
+            "id": "c",
+            "text": "何も確認しない"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "損失の痛みが本文の要点です。"
+      },
+      {
+        "id": "loss-aversion-2",
+        "prompt": "選択で分けて考えるもの？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "得失と確率"
+          },
+          {
+            "id": "b",
+            "text": "最初の印象だけで決める"
+          },
+          {
+            "id": "c",
+            "text": "条件を無視する"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "得失と確率ことが重要です。"
+      }
+    ]
+  },
+  {
+    "id": "recency-effect",
+    "title": "新近効果",
+    "source": "科学・心理学の概念をもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "並んだ情報では、最後に見聞きした情報が思い出されやすくなることがあります。重要な点を最後にまとめると、要点を思い出してもらいやすくなります。",
+    "questions": [
+      {
+        "id": "recency-effect-1",
+        "prompt": "思い出されやすい情報？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "最後の情報"
+          },
+          {
+            "id": "b",
+            "text": "関係しない情報を選ぶ"
+          },
+          {
+            "id": "c",
+            "text": "何も確認しない"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "最後の情報が本文の要点です。"
+      },
+      {
+        "id": "recency-effect-2",
+        "prompt": "最後に行うとよいこと？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "要点をまとめる"
+          },
+          {
+            "id": "b",
+            "text": "最初の印象だけで決める"
+          },
+          {
+            "id": "c",
+            "text": "条件を無視する"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "要点をまとめることが重要です。"
+      }
+    ]
+  },
+  {
+    "id": "spacing-effect",
+    "title": "分散学習の効果",
+    "source": "科学・心理学の概念をもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "同じ内容を一度に詰め込むより、複数の日に分けると後で思い出しやすくなることがあります。間隔を空けると、思い出す努力が生まれます。",
+    "questions": [
+      {
+        "id": "spacing-effect-1",
+        "prompt": "学習をどう分ける？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "複数の日に分ける"
+          },
+          {
+            "id": "b",
+            "text": "関係しない情報を選ぶ"
+          },
+          {
+            "id": "c",
+            "text": "何も確認しない"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "複数の日に分けるが本文の要点です。"
+      },
+      {
+        "id": "spacing-effect-2",
+        "prompt": "間隔を空けると生まれるもの？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "思い出す努力"
+          },
+          {
+            "id": "b",
+            "text": "最初の印象だけで決める"
+          },
+          {
+            "id": "c",
+            "text": "条件を無視する"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "思い出す努力ことが重要です。"
+      }
+    ]
+  },
+  {
+    "id": "bystander-effect",
+    "title": "傍観者効果",
+    "source": "科学・心理学の概念をもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "周りに人が多いと、誰かが助けるだろうと考えて行動が遅れることがあります。助けを求めるときは特定の人に役割を頼むと、行動につながりやすくなります。",
+    "questions": [
+      {
+        "id": "bystander-effect-1",
+        "prompt": "人が多いと起こること？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "行動が遅れる"
+          },
+          {
+            "id": "b",
+            "text": "関係しない情報を選ぶ"
+          },
+          {
+            "id": "c",
+            "text": "何も確認しない"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "行動が遅れるが本文の要点です。"
+      },
+      {
+        "id": "bystander-effect-2",
+        "prompt": "助けを頼む方法？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "特定の人に頼む"
+          },
+          {
+            "id": "b",
+            "text": "最初の印象だけで決める"
+          },
+          {
+            "id": "c",
+            "text": "条件を無視する"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "特定の人に頼むことが重要です。"
+      }
+    ]
+  },
+  {
+    "id": "hawthorne-effect",
+    "title": "観察される効果",
+    "source": "科学・心理学の概念をもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "人は見られていると意識すると、普段と違う行動を取ることがあります。研究では条件をそろえ、比較するグループを置いて影響を確かめます。",
+    "questions": [
+      {
+        "id": "hawthorne-effect-1",
+        "prompt": "観察されると変わるもの？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "行動"
+          },
+          {
+            "id": "b",
+            "text": "関係しない情報を選ぶ"
+          },
+          {
+            "id": "c",
+            "text": "何も確認しない"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "行動が本文の要点です。"
+      },
+      {
+        "id": "hawthorne-effect-2",
+        "prompt": "影響を確かめる方法？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "条件をそろえて比較する"
+          },
+          {
+            "id": "b",
+            "text": "最初の印象だけで決める"
+          },
+          {
+            "id": "c",
+            "text": "条件を無視する"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "条件をそろえて比較することが重要です。"
+      }
+    ]
+  },
+  {
+    "id": "placebo-nocebo",
+    "title": "ノセボ効果",
+    "source": "科学・心理学の概念をもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "不安や悪い予想が体の不調を強めることをノセボ効果と呼びます。症状を気のせいと決めつけず、安全に相談しながら原因を調べることが大切です。",
+    "questions": [
+      {
+        "id": "placebo-nocebo-1",
+        "prompt": "不調を強めることがあるもの？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "不安や悪い予想"
+          },
+          {
+            "id": "b",
+            "text": "関係しない情報を選ぶ"
+          },
+          {
+            "id": "c",
+            "text": "何も確認しない"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "不安や悪い予想が本文の要点です。"
+      },
+      {
+        "id": "placebo-nocebo-2",
+        "prompt": "大切な対応？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "安全に相談する"
+          },
+          {
+            "id": "b",
+            "text": "最初の印象だけで決める"
+          },
+          {
+            "id": "c",
+            "text": "条件を無視する"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "安全に相談することが重要です。"
+      }
+    ]
+  },
+  {
+    "id": "observer-effect",
+    "title": "観測と対象の変化",
+    "source": "科学・心理学の概念をもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "測定する行為そのものが対象に影響することがあります。測定では道具の影響を小さくし、誤差や条件を記録することが重要です。",
+    "questions": [
+      {
+        "id": "observer-effect-1",
+        "prompt": "測定で起こること？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "対象への影響"
+          },
+          {
+            "id": "b",
+            "text": "関係しない情報を選ぶ"
+          },
+          {
+            "id": "c",
+            "text": "何も確認しない"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "対象への影響が本文の要点です。"
+      },
+      {
+        "id": "observer-effect-2",
+        "prompt": "記録するもの？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "誤差や条件"
+          },
+          {
+            "id": "b",
+            "text": "最初の印象だけで決める"
+          },
+          {
+            "id": "c",
+            "text": "条件を無視する"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "誤差や条件ことが重要です。"
+      }
+    ]
+  },
+  {
+    "id": "critical-mass",
+    "title": "臨界量",
+    "source": "科学・心理学の概念をもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "変化が広がるには、ある境目を超える量や条件が必要な場合があります。その境目を臨界量と呼びます。必要な量は条件によって変わります。",
+    "questions": [
+      {
+        "id": "critical-mass-1",
+        "prompt": "変化の境目？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "臨界量"
+          },
+          {
+            "id": "b",
+            "text": "関係しない情報を選ぶ"
+          },
+          {
+            "id": "c",
+            "text": "何も確認しない"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "臨界量が本文の要点です。"
+      },
+      {
+        "id": "critical-mass-2",
+        "prompt": "数字を使うとき必要なこと？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "条件の確認"
+          },
+          {
+            "id": "b",
+            "text": "最初の印象だけで決める"
+          },
+          {
+            "id": "c",
+            "text": "条件を無視する"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "条件の確認ことが重要です。"
+      }
+    ]
+  },
+  {
+    "id": "survivorship-bias",
+    "title": "生存者バイアス",
+    "source": "科学・心理学の概念をもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "成功した人や残ったデータだけを見ると、失敗した例を見落とします。成功例を調べるときも、途中でやめた例を含めて考えることが重要です。",
+    "questions": [
+      {
+        "id": "survivorship-bias-1",
+        "prompt": "見落としやすい例？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "失敗した例"
+          },
+          {
+            "id": "b",
+            "text": "関係しない情報を選ぶ"
+          },
+          {
+            "id": "c",
+            "text": "何も確認しない"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "失敗した例が本文の要点です。"
+      },
+      {
+        "id": "survivorship-bias-2",
+        "prompt": "成功例と合わせて見るもの？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "残らなかった例"
+          },
+          {
+            "id": "b",
+            "text": "最初の印象だけで決める"
+          },
+          {
+            "id": "c",
+            "text": "条件を無視する"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "残らなかった例ことが重要です。"
+      }
+    ]
+  },
+  {
+    "id": "regression-mean",
+    "title": "平均への回帰",
+    "source": "科学・心理学の概念をもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "極端に高い結果や低い結果の次には、平均に近い結果が出やすくなることがあります。複数回測定して比較すると、偶然と効果を分けやすくなります。",
+    "questions": [
+      {
+        "id": "regression-mean-1",
+        "prompt": "次に出やすい結果？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "平均に近い結果"
+          },
+          {
+            "id": "b",
+            "text": "関係しない情報を選ぶ"
+          },
+          {
+            "id": "c",
+            "text": "何も確認しない"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "平均に近い結果が本文の要点です。"
+      },
+      {
+        "id": "regression-mean-2",
+        "prompt": "効果を確かめる方法？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "複数回の比較"
+          },
+          {
+            "id": "b",
+            "text": "最初の印象だけで決める"
+          },
+          {
+            "id": "c",
+            "text": "条件を無視する"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "複数回の比較ことが重要です。"
+      }
+    ]
+  },
+  {
+    "id": "correlation-causation",
+    "title": "相関と因果",
+    "source": "科学・心理学の概念をもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "二つの出来事が同時に増減しても、一方が他方の原因とは限りません。第三の要因や別の説明を調べ、条件を比べる必要があります。",
+    "questions": [
+      {
+        "id": "correlation-causation-1",
+        "prompt": "同時に増減しても何とは限らない？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "原因と結果の関係"
+          },
+          {
+            "id": "b",
+            "text": "関係しない情報を選ぶ"
+          },
+          {
+            "id": "c",
+            "text": "何も確認しない"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "原因と結果の関係が本文の要点です。"
+      },
+      {
+        "id": "correlation-causation-2",
+        "prompt": "原因を確かめるもの？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "別の説明や条件"
+          },
+          {
+            "id": "b",
+            "text": "最初の印象だけで決める"
+          },
+          {
+            "id": "c",
+            "text": "条件を無視する"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "別の説明や条件ことが重要です。"
+      }
+    ]
+  }
+]

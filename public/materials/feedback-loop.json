@@ -1,0 +1,49 @@
+{
+  "id": "feedback-loop",
+  "title": "フィードバック",
+  "source": "科学・心理学の概念をもとにしたオリジナル要約",
+  "license": "Project Original; summary of research literature",
+  "body": "結果を見て次の行動を調整する仕組みをフィードバックといいます。ずれを小さくする負のフィードバックや、変化を大きくする正のフィードバックがあります。",
+  "questions": [
+    {
+      "id": "feedback-loop-1",
+      "prompt": "結果を見て何をする？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "次の行動を調整する"
+        },
+        {
+          "id": "b",
+          "text": "関係しない情報を選ぶ"
+        },
+        {
+          "id": "c",
+          "text": "何も確認しない"
+        }
+      ],
+      "answerId": "a",
+      "explanation": "次の行動を調整するが本文の要点です。"
+    },
+    {
+      "id": "feedback-loop-2",
+      "prompt": "ずれを小さくする種類？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "負のフィードバック"
+        },
+        {
+          "id": "b",
+          "text": "最初の印象だけで決める"
+        },
+        {
+          "id": "c",
+          "text": "条件を無視する"
+        }
+      ],
+      "answerId": "a",
+      "explanation": "負のフィードバックことが重要です。"
+    }
+  ]
+}

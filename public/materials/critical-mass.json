@@ -1,0 +1,49 @@
+{
+  "id": "critical-mass",
+  "title": "臨界量",
+  "source": "科学・心理学の概念をもとにしたオリジナル要約",
+  "license": "Project Original; summary of research literature",
+  "body": "変化が広がるには、ある境目を超える量や条件が必要な場合があります。その境目を臨界量と呼びます。必要な量は条件によって変わります。",
+  "questions": [
+    {
+      "id": "critical-mass-1",
+      "prompt": "変化の境目？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "臨界量"
+        },
+        {
+          "id": "b",
+          "text": "関係しない情報を選ぶ"
+        },
+        {
+          "id": "c",
+          "text": "何も確認しない"
+        }
+      ],
+      "answerId": "a",
+      "explanation": "臨界量が本文の要点です。"
+    },
+    {
+      "id": "critical-mass-2",
+      "prompt": "数字を使うとき必要なこと？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "条件の確認"
+        },
+        {
+          "id": "b",
+          "text": "最初の印象だけで決める"
+        },
+        {
+          "id": "c",
+          "text": "条件を無視する"
+        }
+      ],
+      "answerId": "a",
+      "explanation": "条件の確認ことが重要です。"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "id": "loss-aversion",
+  "title": "損失回避",
+  "source": "科学・心理学の概念をもとにしたオリジナル要約",
+  "license": "Project Original; summary of research literature",
+  "body": "人は同じ大きさの利益より、損失の痛みを強く感じることがあります。選択肢を比べるときは、得失と確率を分けて考えます。",
+  "questions": [
+    {
+      "id": "loss-aversion-1",
+      "prompt": "強く感じやすいもの？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "損失の痛み"
+        },
+        {
+          "id": "b",
+          "text": "関係しない情報を選ぶ"
+        },
+        {
+          "id": "c",
+          "text": "何も確認しない"
+        }
+      ],
+      "answerId": "a",
+      "explanation": "損失の痛みが本文の要点です。"
+    },
+    {
+      "id": "loss-aversion-2",
+      "prompt": "選択で分けて考えるもの？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "得失と確率"
+        },
+        {
+          "id": "b",
+          "text": "最初の印象だけで決める"
+        },
+        {
+          "id": "c",
+          "text": "条件を無視する"
+        }
+      ],
+      "answerId": "a",
+      "explanation": "得失と確率ことが重要です。"
+    }
+  ]
+}

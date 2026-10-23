@@ -1,53 +1,5 @@
 [
   {
-    "id": "desk-reset",
-    "title": "机まわりを整える習慣",
-    "path": "materials/desk-reset.json",
-    "audio": "audio/desk-reset.ogg"
-  },
-  {
-    "id": "meal-plan",
-    "title": "平日の食事を決める工夫",
-    "path": "materials/meal-plan.json",
-    "audio": "audio/meal-plan.ogg"
-  },
-  {
-    "id": "note-capture",
-    "title": "思いつきを逃さないメモ",
-    "path": "materials/note-capture.json",
-    "audio": "audio/note-capture.ogg"
-  },
-  {
-    "id": "commute-time",
-    "title": "移動時間を学びに変える方法",
-    "path": "materials/commute-time.json",
-    "audio": "audio/commute-time.ogg"
-  },
-  {
-    "id": "sleep-routine",
-    "title": "眠る前の準備を軽くする",
-    "path": "materials/sleep-routine.json",
-    "audio": "audio/sleep-routine.ogg"
-  },
-  {
-    "id": "meeting-summary",
-    "title": "会議の要点を残す方法",
-    "path": "materials/meeting-summary.json",
-    "audio": "audio/meeting-summary.ogg"
-  },
-  {
-    "id": "week-review",
-    "title": "週末に予定を見直す",
-    "path": "materials/week-review.json",
-    "audio": "audio/week-review.ogg"
-  },
-  {
-    "id": "daily-focus",
-    "title": "集中力を保つ小さな工夫",
-    "path": "materials/daily-focus.json",
-    "audio": "audio/daily-focus.ogg"
-  },
-  {
     "id": "confirmation-bias",
     "title": "確証バイアスを知る",
     "path": "materials/confirmation-bias.json",
@@ -78,33 +30,135 @@
     "audio": "audio/entropy.ogg"
   },
   {
-    "id": "morning-walk",
-    "title": "朝の散歩を続ける工夫",
-    "path": "materials/morning-walk.json",
-    "audio": "audio/morning-walk.ogg"
+    "id": "newton-laws",
+    "title": "ニュートンの運動法則",
+    "path": "materials/newton-laws.json",
+    "audio": "audio/newton-laws.ogg"
   },
   {
-    "id": "notification-break",
-    "title": "通知を減らして集中する方法",
-    "path": "materials/notification-break.json",
-    "audio": "audio/notification-break.ogg"
+    "id": "inertia",
+    "title": "慣性の法則",
+    "path": "materials/inertia.json",
+    "audio": "audio/inertia.ogg"
   },
   {
-    "id": "forgetting-curve",
-    "title": "忘れる速さと復習のタイミング",
-    "path": "materials/forgetting-curve.json",
-    "audio": "audio/forgetting-curve.ogg"
+    "id": "gravity",
+    "title": "重力と落下",
+    "path": "materials/gravity.json",
+    "audio": "audio/gravity.ogg"
   },
   {
-    "id": "retrieval-practice",
-    "title": "思い出す練習が学習を助ける",
-    "path": "materials/retrieval-practice.json",
-    "audio": "audio/retrieval-practice.ogg"
+    "id": "archimedes",
+    "title": "浮力の考え方",
+    "path": "materials/archimedes.json",
+    "audio": "audio/archimedes.ogg"
   },
   {
-    "id": "growth-mindset",
-    "title": "努力と学び方を見直す考え方",
-    "path": "materials/growth-mindset.json",
-    "audio": "audio/growth-mindset.ogg"
+    "id": "ohm-law",
+    "title": "オームの法則",
+    "path": "materials/ohm-law.json",
+    "audio": "audio/ohm-law.ogg"
+  },
+  {
+    "id": "doppler",
+    "title": "ドップラー効果",
+    "path": "materials/doppler.json",
+    "audio": "audio/doppler.ogg"
+  },
+  {
+    "id": "photoelectric",
+    "title": "光電効果",
+    "path": "materials/photoelectric.json",
+    "audio": "audio/photoelectric.ogg"
+  },
+  {
+    "id": "conservation-energy",
+    "title": "エネルギー保存",
+    "path": "materials/conservation-energy.json",
+    "audio": "audio/conservation-energy.ogg"
+  },
+  {
+    "id": "feedback-loop",
+    "title": "フィードバック",
+    "path": "materials/feedback-loop.json",
+    "audio": "audio/feedback-loop.ogg"
+  },
+  {
+    "id": "availability-heuristic",
+    "title": "利用可能性ヒューリスティック",
+    "path": "materials/availability-heuristic.json",
+    "audio": "audio/availability-heuristic.ogg"
+  },
+  {
+    "id": "anchoring",
+    "title": "アンカリング効果",
+    "path": "materials/anchoring.json",
+    "audio": "audio/anchoring.ogg"
+  },
+  {
+    "id": "loss-aversion",
+    "title": "損失回避",
+    "path": "materials/loss-aversion.json",
+    "audio": "audio/loss-aversion.ogg"
+  },
+  {
+    "id": "recency-effect",
+    "title": "新近効果",
+    "path": "materials/recency-effect.json",
+    "audio": "audio/recency-effect.ogg"
+  },
+  {
+    "id": "spacing-effect",
+    "title": "分散学習の効果",
+    "path": "materials/spacing-effect.json",
+    "audio": "audio/spacing-effect.ogg"
+  },
+  {
+    "id": "bystander-effect",
+    "title": "傍観者効果",
+    "path": "materials/bystander-effect.json",
+    "audio": "audio/bystander-effect.ogg"
+  },
+  {
+    "id": "hawthorne-effect",
+    "title": "観察される効果",
+    "path": "materials/hawthorne-effect.json",
+    "audio": "audio/hawthorne-effect.ogg"
+  },
+  {
+    "id": "placebo-nocebo",
+    "title": "ノセボ効果",
+    "path": "materials/placebo-nocebo.json",
+    "audio": "audio/placebo-nocebo.ogg"
+  },
+  {
+    "id": "observer-effect",
+    "title": "観測と対象の変化",
+    "path": "materials/observer-effect.json",
+    "audio": "audio/observer-effect.ogg"
+  },
+  {
+    "id": "critical-mass",
+    "title": "臨界量",
+    "path": "materials/critical-mass.json",
+    "audio": "audio/critical-mass.ogg"
+  },
+  {
+    "id": "survivorship-bias",
+    "title": "生存者バイアス",
+    "path": "materials/survivorship-bias.json",
+    "audio": "audio/survivorship-bias.ogg"
+  },
+  {
+    "id": "regression-mean",
+    "title": "平均への回帰",
+    "path": "materials/regression-mean.json",
+    "audio": "audio/regression-mean.ogg"
+  },
+  {
+    "id": "correlation-causation",
+    "title": "相関と因果",
+    "path": "materials/correlation-causation.json",
+    "audio": "audio/correlation-causation.ogg"
   }
 ]
