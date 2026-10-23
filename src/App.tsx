@@ -284,9 +284,8 @@ export default function App() {
         <div className="material-list">
           {materials.map((material) => <button className={`material-card${selectedMaterialId === material.id ? ' selected' : ''}`} type="button" key={material.id} onClick={() => selectMaterial(material.id)}><strong>{material.title}</strong><span>{material.body.length}文字・問題 {material.questions.length}問</span></button>)}
         </div>
-        {selectedMaterialId && <p className="hint material-note">教材を選択しました。音声の準備ができたら再生してください。問題の正解と解説は採点後に表示します。</p>}
       </section>}
-      <section className="workspace" aria-labelledby={mode === 'custom' ? 'input-title' : 'playback-title'}>
+      {mode === 'custom' && <section className="workspace" aria-labelledby="input-title">
         {mode === 'custom' && <><div className="field-heading"><label id="input-title" htmlFor="text">文章</label><span>{text.length} / {MAX_LENGTH} 文字</span></div>
           <textarea id="text" maxLength={MAX_LENGTH} value={text} onChange={(event) => { setText(event.target.value); setSelectedMaterialId(''); setMode('custom') }} placeholder="ここに日本語の文章を入力、または貼り付けてください。" />
           <button className="primary" type="button" onClick={() => generate()} disabled={busy}>{status === 'error' ? 'もう一度生成する' : status === 'ready' && !stale ? '再生成する' : '音声を生成する'} <span aria-hidden="true">→</span></button></>}
@@ -296,8 +295,7 @@ export default function App() {
           {error && <span className="error">{error}</span>}
           {mode === 'custom' && status === 'ready' && !error && (stale ? '文章が変更されています。新しい文章を聞くには、もう一度生成してください。' : '音声の準備ができました。')}
         </div>}
-        {mode === 'materials' && selectedMaterial && <div className="test-entry"><p className="playback-label">理解度テスト</p><p className="hint">教材を聞いた後、問題に進んで内容を確認できます。</p>{!audioUrl && <p className="hint">先に教材の音声を生成してください。</p>}{stale && <p className="hint">本文を変更したため、再生成してから問題に進んでください。</p>}</div>}
-      </section>
+      </section>}
       <aside className="mini-player" aria-label="音声プレイヤー">
         <strong ref={miniTitle} className={`mini-title${titleScrollable ? ' scrollable' : ''}`}><span>{mode === 'materials' && selectedMaterial ? selectedMaterial.title : '自作の文章'}</span></strong>
         <div className="mini-actions"><button type="button" className="mini-button" onClick={resetPlayback} disabled={!audioUrl} aria-label="最初に戻る" title="最初に戻る">⏮</button><button type="button" className="mini-button mini-play" onClick={togglePlayback} disabled={!audioUrl} aria-label={!audioUrl ? '音声準備中' : playing ? '一時停止' : '再生'} title={!audioUrl ? '音声準備中' : playing ? '一時停止' : '再生'}>{!audioUrl ? '…' : playing ? 'Ⅱ' : '▶'}</button><button type="button" className={`mini-button${repeat ? ' selected' : ''}`} onClick={() => setRepeat((current) => !current)} disabled={!audioUrl} aria-pressed={repeat} aria-label="繰り返し" title="繰り返し">↻</button></div>
