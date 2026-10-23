@@ -1,0 +1,49 @@
+{
+  "id": "natural-selection",
+  "title": "自然選択",
+  "source": "科学・心理学の概念をもとにしたオリジナル要約",
+  "license": "Project Original; summary of research literature",
+  "body": "環境に合った特徴を持つ個体が生き残り、子孫を残しやすいと、その特徴が集団に増えることがあります。個体が意識して進化するのではなく、世代を重ねた結果として変化します。",
+  "questions": [
+    {
+      "id": "natural-selection-1",
+      "prompt": "増えやすくなる特徴？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "環境に合った特徴"
+        },
+        {
+          "id": "b",
+          "text": "関係しない情報を選ぶ"
+        },
+        {
+          "id": "c",
+          "text": "何も確認しない"
+        }
+      ],
+      "answerId": "a",
+      "explanation": "環境に合った特徴が本文の要点です。"
+    },
+    {
+      "id": "natural-selection-2",
+      "prompt": "変化が積み重なる単位？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "世代"
+        },
+        {
+          "id": "b",
+          "text": "最初の印象だけで決める"
+        },
+        {
+          "id": "c",
+          "text": "条件を無視する"
+        }
+      ],
+      "answerId": "a",
+      "explanation": "世代ことが重要です。"
+    }
+  ]
+}

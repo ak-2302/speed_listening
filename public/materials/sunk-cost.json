@@ -1,0 +1,49 @@
+{
+  "id": "sunk-cost",
+  "title": "サンクコスト効果",
+  "source": "科学・心理学の概念をもとにしたオリジナル要約",
+  "license": "Project Original; summary of research literature",
+  "body": "すでに使って戻らない時間やお金を理由に、今後の見込みが低い計画を続けてしまうことがあります。判断するときは、過去の費用ではなく、これから得られる利益と負担を比べます。",
+  "questions": [
+    {
+      "id": "sunk-cost-1",
+      "prompt": "戻らない費用？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "サンクコスト"
+        },
+        {
+          "id": "b",
+          "text": "関係しない情報を選ぶ"
+        },
+        {
+          "id": "c",
+          "text": "何も確認しない"
+        }
+      ],
+      "answerId": "a",
+      "explanation": "サンクコストが本文の要点です。"
+    },
+    {
+      "id": "sunk-cost-2",
+      "prompt": "比べるもの？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "今後の利益と負担"
+        },
+        {
+          "id": "b",
+          "text": "最初の印象だけで決める"
+        },
+        {
+          "id": "c",
+          "text": "条件を無視する"
+        }
+      ],
+      "answerId": "a",
+      "explanation": "今後の利益と負担ことが重要です。"
+    }
+  ]
+}

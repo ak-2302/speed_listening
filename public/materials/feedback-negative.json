@@ -1,0 +1,49 @@
+{
+  "id": "feedback-negative",
+  "title": "負のフィードバック",
+  "source": "科学・心理学の概念をもとにしたオリジナル要約",
+  "license": "Project Original; summary of research literature",
+  "body": "目標との差を小さくするように働く仕組みを負のフィードバックといいます。体温調節や自動制御などで使われ、変化が大きくなりすぎるのを抑えます。",
+  "questions": [
+    {
+      "id": "feedback-negative-1",
+      "prompt": "小さくするもの？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "目標との差"
+        },
+        {
+          "id": "b",
+          "text": "関係しない情報を選ぶ"
+        },
+        {
+          "id": "c",
+          "text": "何も確認しない"
+        }
+      ],
+      "answerId": "a",
+      "explanation": "目標との差が本文の要点です。"
+    },
+    {
+      "id": "feedback-negative-2",
+      "prompt": "抑えるもの？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "大きな変化"
+        },
+        {
+          "id": "b",
+          "text": "最初の印象だけで決める"
+        },
+        {
+          "id": "c",
+          "text": "条件を無視する"
+        }
+      ],
+      "answerId": "a",
+      "explanation": "大きな変化ことが重要です。"
+    }
+  ]
+}

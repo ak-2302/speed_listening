@@ -1,0 +1,49 @@
+{
+  "id": "mere-exposure",
+  "title": "単純接触効果",
+  "source": "科学・心理学の概念をもとにしたオリジナル要約",
+  "license": "Project Original; summary of research literature",
+  "body": "同じ対象に何度も触れると、内容を深く知らなくても親しみを感じやすくなることがあります。ただし、接触が不快だったり強制的だったりすると、いつも好意が増えるとは限りません。",
+  "questions": [
+    {
+      "id": "mere-exposure-1",
+      "prompt": "増えやすい感情？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "親しみ"
+        },
+        {
+          "id": "b",
+          "text": "関係しない情報を選ぶ"
+        },
+        {
+          "id": "c",
+          "text": "何も確認しない"
+        }
+      ],
+      "answerId": "a",
+      "explanation": "親しみが本文の要点です。"
+    },
+    {
+      "id": "mere-exposure-2",
+      "prompt": "好意が必ず増えるか？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "増えるとは限らない"
+        },
+        {
+          "id": "b",
+          "text": "最初の印象だけで決める"
+        },
+        {
+          "id": "c",
+          "text": "条件を無視する"
+        }
+      ],
+      "answerId": "a",
+      "explanation": "増えるとは限らないことが重要です。"
+    }
+  ]
+}

@@ -160,5 +160,83 @@
     "title": "相関と因果",
     "path": "materials/correlation-causation.json",
     "audio": "audio/correlation-causation.ogg"
+  },
+  {
+    "id": "double-slit",
+    "title": "二重スリット実験",
+    "path": "materials/double-slit.json",
+    "audio": "audio/double-slit.ogg"
+  },
+  {
+    "id": "uncertainty",
+    "title": "不確定性原理",
+    "path": "materials/uncertainty.json",
+    "audio": "audio/uncertainty.ogg"
+  },
+  {
+    "id": "natural-selection",
+    "title": "自然選択",
+    "path": "materials/natural-selection.json",
+    "audio": "audio/natural-selection.ogg"
+  },
+  {
+    "id": "feedback-negative",
+    "title": "負のフィードバック",
+    "path": "materials/feedback-negative.json",
+    "audio": "audio/feedback-negative.ogg"
+  },
+  {
+    "id": "exponential-growth",
+    "title": "指数関数的な増加",
+    "path": "materials/exponential-growth.json",
+    "audio": "audio/exponential-growth.ogg"
+  },
+  {
+    "id": "law-diminishing-returns",
+    "title": "限界効用逓減",
+    "path": "materials/law-diminishing-returns.json",
+    "audio": "audio/law-diminishing-returns.ogg"
+  },
+  {
+    "id": "sunk-cost",
+    "title": "サンクコスト効果",
+    "path": "materials/sunk-cost.json",
+    "audio": "audio/sunk-cost.ogg"
+  },
+  {
+    "id": "planning-fallacy",
+    "title": "計画錯誤",
+    "path": "materials/planning-fallacy.json",
+    "audio": "audio/planning-fallacy.ogg"
+  },
+  {
+    "id": "peak-end-rule",
+    "title": "ピーク・エンドの法則",
+    "path": "materials/peak-end-rule.json",
+    "audio": "audio/peak-end-rule.ogg"
+  },
+  {
+    "id": "mere-exposure",
+    "title": "単純接触効果",
+    "path": "materials/mere-exposure.json",
+    "audio": "audio/mere-exposure.ogg"
+  },
+  {
+    "id": "self-serving-bias",
+    "title": "自己奉仕バイアス",
+    "path": "materials/self-serving-bias.json",
+    "audio": "audio/self-serving-bias.ogg"
+  },
+  {
+    "id": "fundamental-attribution",
+    "title": "基本的帰属の誤り",
+    "path": "materials/fundamental-attribution.json",
+    "audio": "audio/fundamental-attribution.ogg"
+  },
+  {
+    "id": "choice-overload",
+    "title": "選択肢過多",
+    "path": "materials/choice-overload.json",
+    "audio": "audio/choice-overload.ogg"
   }
 ]

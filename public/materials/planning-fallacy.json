@@ -1,0 +1,49 @@
+{
+  "id": "planning-fallacy",
+  "title": "計画錯誤",
+  "source": "科学・心理学の概念をもとにしたオリジナル要約",
+  "license": "Project Original; summary of research literature",
+  "body": "人は作業に必要な時間や費用を、実際より少なく見積もることがあります。過去の似た作業の記録や余裕時間を使うと、計画を現実に近づけやすくなります。",
+  "questions": [
+    {
+      "id": "planning-fallacy-1",
+      "prompt": "少なく見積もりやすいもの？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "時間や費用"
+        },
+        {
+          "id": "b",
+          "text": "関係しない情報を選ぶ"
+        },
+        {
+          "id": "c",
+          "text": "何も確認しない"
+        }
+      ],
+      "answerId": "a",
+      "explanation": "時間や費用が本文の要点です。"
+    },
+    {
+      "id": "planning-fallacy-2",
+      "prompt": "計画に使う情報？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "過去の記録"
+        },
+        {
+          "id": "b",
+          "text": "最初の印象だけで決める"
+        },
+        {
+          "id": "c",
+          "text": "条件を無視する"
+        }
+      ],
+      "answerId": "a",
+      "explanation": "過去の記録ことが重要です。"
+    }
+  ]
+}

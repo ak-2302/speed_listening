@@ -1,0 +1,49 @@
+{
+  "id": "peak-end-rule",
+  "title": "ピーク・エンドの法則",
+  "source": "科学・心理学の概念をもとにしたオリジナル要約",
+  "license": "Project Original; summary of research literature",
+  "body": "体験全体より、強く印象に残った場面と最後の場面をもとに、体験を評価しやすいことがあります。途中の長さだけでなく、重要な場面と終わり方も感じ方に影響します。",
+  "questions": [
+    {
+      "id": "peak-end-rule-1",
+      "prompt": "評価に影響する場面？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "印象的な場面と最後"
+        },
+        {
+          "id": "b",
+          "text": "関係しない情報を選ぶ"
+        },
+        {
+          "id": "c",
+          "text": "何も確認しない"
+        }
+      ],
+      "answerId": "a",
+      "explanation": "印象的な場面と最後が本文の要点です。"
+    },
+    {
+      "id": "peak-end-rule-2",
+      "prompt": "途中の長さ以外に見るもの？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "終わり方"
+        },
+        {
+          "id": "b",
+          "text": "最初の印象だけで決める"
+        },
+        {
+          "id": "c",
+          "text": "条件を無視する"
+        }
+      ],
+      "answerId": "a",
+      "explanation": "終わり方ことが重要です。"
+    }
+  ]
+}

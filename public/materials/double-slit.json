@@ -1,0 +1,49 @@
+{
+  "id": "double-slit",
+  "title": "二重スリット実験",
+  "source": "科学・心理学の概念をもとにしたオリジナル要約",
+  "license": "Project Original; summary of research literature",
+  "body": "光や電子を二つの細い隙間に通すと、波のような干渉模様が現れることがあります。観測の仕方によって結果が変わる点は、量子の世界を考える手がかりです。",
+  "questions": [
+    {
+      "id": "double-slit-1",
+      "prompt": "現れる模様？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "干渉模様"
+        },
+        {
+          "id": "b",
+          "text": "関係しない情報を選ぶ"
+        },
+        {
+          "id": "c",
+          "text": "何も確認しない"
+        }
+      ],
+      "answerId": "a",
+      "explanation": "干渉模様が本文の要点です。"
+    },
+    {
+      "id": "double-slit-2",
+      "prompt": "結果に関係するもの？",
+      "choices": [
+        {
+          "id": "a",
+          "text": "観測の仕方"
+        },
+        {
+          "id": "b",
+          "text": "最初の印象だけで決める"
+        },
+        {
+          "id": "c",
+          "text": "条件を無視する"
+        }
+      ],
+      "answerId": "a",
+      "explanation": "観測の仕方ことが重要です。"
+    }
+  ]
+}

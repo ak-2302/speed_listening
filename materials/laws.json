@@ -1321,5 +1321,642 @@
         "explanation": "別の説明や条件ことが重要です。"
       }
     ]
+  },
+  {
+    "id": "double-slit",
+    "title": "二重スリット実験",
+    "source": "科学・心理学の概念をもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "光や電子を二つの細い隙間に通すと、波のような干渉模様が現れることがあります。観測の仕方によって結果が変わる点は、量子の世界を考える手がかりです。",
+    "questions": [
+      {
+        "id": "double-slit-1",
+        "prompt": "現れる模様？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "干渉模様"
+          },
+          {
+            "id": "b",
+            "text": "関係しない情報を選ぶ"
+          },
+          {
+            "id": "c",
+            "text": "何も確認しない"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "干渉模様が本文の要点です。"
+      },
+      {
+        "id": "double-slit-2",
+        "prompt": "結果に関係するもの？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "観測の仕方"
+          },
+          {
+            "id": "b",
+            "text": "最初の印象だけで決める"
+          },
+          {
+            "id": "c",
+            "text": "条件を無視する"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "観測の仕方ことが重要です。"
+      }
+    ]
+  },
+  {
+    "id": "uncertainty",
+    "title": "不確定性原理",
+    "source": "科学・心理学の概念をもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "量子の世界では、位置と運動量のような組み合わせを同時にいくらでも正確には決められないと説明されます。これは測定器の未熟さだけでなく、自然の性質に関係します。",
+    "questions": [
+      {
+        "id": "uncertainty-1",
+        "prompt": "同時に正確に決めにくいもの？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "位置と運動量"
+          },
+          {
+            "id": "b",
+            "text": "関係しない情報を選ぶ"
+          },
+          {
+            "id": "c",
+            "text": "何も確認しない"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "位置と運動量が本文の要点です。"
+      },
+      {
+        "id": "uncertainty-2",
+        "prompt": "関係する世界？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "量子の世界"
+          },
+          {
+            "id": "b",
+            "text": "最初の印象だけで決める"
+          },
+          {
+            "id": "c",
+            "text": "条件を無視する"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "量子の世界ことが重要です。"
+      }
+    ]
+  },
+  {
+    "id": "natural-selection",
+    "title": "自然選択",
+    "source": "科学・心理学の概念をもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "環境に合った特徴を持つ個体が生き残り、子孫を残しやすいと、その特徴が集団に増えることがあります。個体が意識して進化するのではなく、世代を重ねた結果として変化します。",
+    "questions": [
+      {
+        "id": "natural-selection-1",
+        "prompt": "増えやすくなる特徴？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "環境に合った特徴"
+          },
+          {
+            "id": "b",
+            "text": "関係しない情報を選ぶ"
+          },
+          {
+            "id": "c",
+            "text": "何も確認しない"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "環境に合った特徴が本文の要点です。"
+      },
+      {
+        "id": "natural-selection-2",
+        "prompt": "変化が積み重なる単位？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "世代"
+          },
+          {
+            "id": "b",
+            "text": "最初の印象だけで決める"
+          },
+          {
+            "id": "c",
+            "text": "条件を無視する"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "世代ことが重要です。"
+      }
+    ]
+  },
+  {
+    "id": "feedback-negative",
+    "title": "負のフィードバック",
+    "source": "科学・心理学の概念をもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "目標との差を小さくするように働く仕組みを負のフィードバックといいます。体温調節や自動制御などで使われ、変化が大きくなりすぎるのを抑えます。",
+    "questions": [
+      {
+        "id": "feedback-negative-1",
+        "prompt": "小さくするもの？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "目標との差"
+          },
+          {
+            "id": "b",
+            "text": "関係しない情報を選ぶ"
+          },
+          {
+            "id": "c",
+            "text": "何も確認しない"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "目標との差が本文の要点です。"
+      },
+      {
+        "id": "feedback-negative-2",
+        "prompt": "抑えるもの？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "大きな変化"
+          },
+          {
+            "id": "b",
+            "text": "最初の印象だけで決める"
+          },
+          {
+            "id": "c",
+            "text": "条件を無視する"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "大きな変化ことが重要です。"
+      }
+    ]
+  },
+  {
+    "id": "exponential-growth",
+    "title": "指数関数的な増加",
+    "source": "科学・心理学の概念をもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "一定の割合で増える仕組みでは、最初はゆっくりでも、数が増えるほど増加量も大きくなります。感染の広がりや複利の理解では、増加率と期間を分けて考えることが重要です。",
+    "questions": [
+      {
+        "id": "exponential-growth-1",
+        "prompt": "増加量に影響するもの？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "数と増加率"
+          },
+          {
+            "id": "b",
+            "text": "関係しない情報を選ぶ"
+          },
+          {
+            "id": "c",
+            "text": "何も確認しない"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "数と増加率が本文の要点です。"
+      },
+      {
+        "id": "exponential-growth-2",
+        "prompt": "考える条件？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "増加率と期間"
+          },
+          {
+            "id": "b",
+            "text": "最初の印象だけで決める"
+          },
+          {
+            "id": "c",
+            "text": "条件を無視する"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "増加率と期間ことが重要です。"
+      }
+    ]
+  },
+  {
+    "id": "law-diminishing-returns",
+    "title": "限界効用逓減",
+    "source": "科学・心理学の概念をもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "同じものを追加して得られる満足や効果は、量が増えるほど小さくなることがあります。最初の一つは大きな助けでも、追加分の効果は低くなるという考え方です。",
+    "questions": [
+      {
+        "id": "law-diminishing-returns-1",
+        "prompt": "追加分の効果？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "小さくなることがある"
+          },
+          {
+            "id": "b",
+            "text": "関係しない情報を選ぶ"
+          },
+          {
+            "id": "c",
+            "text": "何も確認しない"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "小さくなることがあるが本文の要点です。"
+      },
+      {
+        "id": "law-diminishing-returns-2",
+        "prompt": "最初の一つの効果？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "大きい"
+          },
+          {
+            "id": "b",
+            "text": "最初の印象だけで決める"
+          },
+          {
+            "id": "c",
+            "text": "条件を無視する"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "大きいことが重要です。"
+      }
+    ]
+  },
+  {
+    "id": "sunk-cost",
+    "title": "サンクコスト効果",
+    "source": "科学・心理学の概念をもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "すでに使って戻らない時間やお金を理由に、今後の見込みが低い計画を続けてしまうことがあります。判断するときは、過去の費用ではなく、これから得られる利益と負担を比べます。",
+    "questions": [
+      {
+        "id": "sunk-cost-1",
+        "prompt": "戻らない費用？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "サンクコスト"
+          },
+          {
+            "id": "b",
+            "text": "関係しない情報を選ぶ"
+          },
+          {
+            "id": "c",
+            "text": "何も確認しない"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "サンクコストが本文の要点です。"
+      },
+      {
+        "id": "sunk-cost-2",
+        "prompt": "比べるもの？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "今後の利益と負担"
+          },
+          {
+            "id": "b",
+            "text": "最初の印象だけで決める"
+          },
+          {
+            "id": "c",
+            "text": "条件を無視する"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "今後の利益と負担ことが重要です。"
+      }
+    ]
+  },
+  {
+    "id": "planning-fallacy",
+    "title": "計画錯誤",
+    "source": "科学・心理学の概念をもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "人は作業に必要な時間や費用を、実際より少なく見積もることがあります。過去の似た作業の記録や余裕時間を使うと、計画を現実に近づけやすくなります。",
+    "questions": [
+      {
+        "id": "planning-fallacy-1",
+        "prompt": "少なく見積もりやすいもの？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "時間や費用"
+          },
+          {
+            "id": "b",
+            "text": "関係しない情報を選ぶ"
+          },
+          {
+            "id": "c",
+            "text": "何も確認しない"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "時間や費用が本文の要点です。"
+      },
+      {
+        "id": "planning-fallacy-2",
+        "prompt": "計画に使う情報？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "過去の記録"
+          },
+          {
+            "id": "b",
+            "text": "最初の印象だけで決める"
+          },
+          {
+            "id": "c",
+            "text": "条件を無視する"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "過去の記録ことが重要です。"
+      }
+    ]
+  },
+  {
+    "id": "peak-end-rule",
+    "title": "ピーク・エンドの法則",
+    "source": "科学・心理学の概念をもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "体験全体より、強く印象に残った場面と最後の場面をもとに、体験を評価しやすいことがあります。途中の長さだけでなく、重要な場面と終わり方も感じ方に影響します。",
+    "questions": [
+      {
+        "id": "peak-end-rule-1",
+        "prompt": "評価に影響する場面？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "印象的な場面と最後"
+          },
+          {
+            "id": "b",
+            "text": "関係しない情報を選ぶ"
+          },
+          {
+            "id": "c",
+            "text": "何も確認しない"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "印象的な場面と最後が本文の要点です。"
+      },
+      {
+        "id": "peak-end-rule-2",
+        "prompt": "途中の長さ以外に見るもの？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "終わり方"
+          },
+          {
+            "id": "b",
+            "text": "最初の印象だけで決める"
+          },
+          {
+            "id": "c",
+            "text": "条件を無視する"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "終わり方ことが重要です。"
+      }
+    ]
+  },
+  {
+    "id": "mere-exposure",
+    "title": "単純接触効果",
+    "source": "科学・心理学の概念をもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "同じ対象に何度も触れると、内容を深く知らなくても親しみを感じやすくなることがあります。ただし、接触が不快だったり強制的だったりすると、いつも好意が増えるとは限りません。",
+    "questions": [
+      {
+        "id": "mere-exposure-1",
+        "prompt": "増えやすい感情？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "親しみ"
+          },
+          {
+            "id": "b",
+            "text": "関係しない情報を選ぶ"
+          },
+          {
+            "id": "c",
+            "text": "何も確認しない"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "親しみが本文の要点です。"
+      },
+      {
+        "id": "mere-exposure-2",
+        "prompt": "好意が必ず増えるか？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "増えるとは限らない"
+          },
+          {
+            "id": "b",
+            "text": "最初の印象だけで決める"
+          },
+          {
+            "id": "c",
+            "text": "条件を無視する"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "増えるとは限らないことが重要です。"
+      }
+    ]
+  },
+  {
+    "id": "self-serving-bias",
+    "title": "自己奉仕バイアス",
+    "source": "科学・心理学の概念をもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "成功は自分の力、失敗は環境のせいと説明しやすい傾向があります。自分を守る働きもありますが、改善の機会を逃すことがあります。結果を振り返るときは、自分の行動と環境の両方を確認します。",
+    "questions": [
+      {
+        "id": "self-serving-bias-1",
+        "prompt": "成功の理由にしやすいもの？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "自分の力"
+          },
+          {
+            "id": "b",
+            "text": "関係しない情報を選ぶ"
+          },
+          {
+            "id": "c",
+            "text": "何も確認しない"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "自分の力が本文の要点です。"
+      },
+      {
+        "id": "self-serving-bias-2",
+        "prompt": "振り返りで見るもの？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "行動と環境"
+          },
+          {
+            "id": "b",
+            "text": "最初の印象だけで決める"
+          },
+          {
+            "id": "c",
+            "text": "条件を無視する"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "行動と環境ことが重要です。"
+      }
+    ]
+  },
+  {
+    "id": "fundamental-attribution",
+    "title": "基本的帰属の誤り",
+    "source": "科学・心理学の概念をもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "他人の行動を性格のせいにし、自分の行動は状況のせいにしやすい傾向があります。相手の事情や置かれた状況も考えると、判断の偏りを小さくできます。",
+    "questions": [
+      {
+        "id": "fundamental-attribution-1",
+        "prompt": "他人の行動の原因にしやすいもの？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "性格"
+          },
+          {
+            "id": "b",
+            "text": "関係しない情報を選ぶ"
+          },
+          {
+            "id": "c",
+            "text": "何も確認しない"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "性格が本文の要点です。"
+      },
+      {
+        "id": "fundamental-attribution-2",
+        "prompt": "考えるとよいもの？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "相手の状況"
+          },
+          {
+            "id": "b",
+            "text": "最初の印象だけで決める"
+          },
+          {
+            "id": "c",
+            "text": "条件を無視する"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "相手の状況ことが重要です。"
+      }
+    ]
+  },
+  {
+    "id": "choice-overload",
+    "title": "選択肢過多",
+    "source": "科学・心理学の概念をもとにしたオリジナル要約",
+    "license": "Project Original; summary of research literature",
+    "body": "選択肢が多すぎると、比較に疲れたり決められなくなったりすることがあります。目的に合う基準を先に決め、候補を絞ると選びやすくなります。",
+    "questions": [
+      {
+        "id": "choice-overload-1",
+        "prompt": "選択肢が多いと起きること？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "決めにくくなる"
+          },
+          {
+            "id": "b",
+            "text": "関係しない情報を選ぶ"
+          },
+          {
+            "id": "c",
+            "text": "何も確認しない"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "決めにくくなるが本文の要点です。"
+      },
+      {
+        "id": "choice-overload-2",
+        "prompt": "選びやすくする方法？",
+        "choices": [
+          {
+            "id": "a",
+            "text": "基準を決めて絞る"
+          },
+          {
+            "id": "b",
+            "text": "最初の印象だけで決める"
+          },
+          {
+            "id": "c",
+            "text": "条件を無視する"
+          }
+        ],
+        "answerId": "a",
+        "explanation": "基準を決めて絞ることが重要です。"
+      }
+    ]
   }
 ]
