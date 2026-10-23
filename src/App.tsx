@@ -7,11 +7,13 @@ import './style.css'
 type Status = 'idle' | 'loading' | 'generating' | 'ready' | 'error'
 type WorkerResult = { type: 'ready', transferredBytes: number | null } | { type: 'audio', pcm: Float32Array, sampleRate: number } | { type: 'error', message: string }
 type PracticeResult = { materialId: string, completedAt: string, speed: number, score: number, total: number }
+type Mode = 'custom' | 'materials'
 const MAX_LENGTH = 100
 const RESULTS_KEY = 'speed-listening-results'
 
 export default function App() {
   const [text, setText] = useState('')
+  const [mode, setMode] = useState<Mode>('custom')
   const [selectedMaterialId, setSelectedMaterialId] = useState('')
   const [generatedText, setGeneratedText] = useState('')
   const [status, setStatus] = useState<Status>('idle')
@@ -113,6 +115,7 @@ export default function App() {
     if (!material) return
     audio.current?.pause()
     setPlaying(false)
+    setMode('materials')
     setSelectedMaterialId(id)
     setText(material.body)
     setGeneratedText('')
@@ -132,6 +135,25 @@ export default function App() {
       setHistory([])
       setStorageNotice('保存済みの結果を読み込めませんでした。')
     }
+  }
+
+  function changeMode(nextMode: Mode) {
+    if (nextMode === mode) return
+    audio.current?.pause()
+    setPlaying(false)
+    setMode(nextMode)
+    setSelectedMaterialId('')
+    setText('')
+    setGeneratedText('')
+    setAudioUrl('')
+    setStatus('idle')
+    setError('')
+    setTestStarted(false)
+    setAnswers({})
+    setTestError('')
+    setTestScore(null)
+    setHistory([])
+    setStorageNotice('')
   }
 
   async function togglePlayback() {
@@ -215,16 +237,20 @@ export default function App() {
         <h1>文章を、聞いてみる。</h1>
         <p>好きな文章を入力して、音声で聞く練習を始めましょう。</p>
       </header>
-      <section className="materials" aria-labelledby="materials-title">
+      <nav className="mode-switch" aria-label="練習モード">
+        <button type="button" className={mode === 'custom' ? 'active' : ''} aria-pressed={mode === 'custom'} onClick={() => changeMode('custom')}>自作の文章</button>
+        <button type="button" className={mode === 'materials' ? 'active' : ''} aria-pressed={mode === 'materials'} onClick={() => changeMode('materials')}>問題集</button>
+      </nav>
+      {mode === 'materials' && <section className="materials" aria-labelledby="materials-title">
         <div className="section-heading"><h2 id="materials-title">教材から選ぶ</h2><span>{materials.length}件</span></div>
         <div className="material-list">
           {materials.map((material) => <button className={`material-card${selectedMaterialId === material.id ? ' selected' : ''}`} type="button" key={material.id} onClick={() => selectMaterial(material.id)}><strong>{material.title}</strong><span>{material.body.length}文字・問題 {material.questions.length}問</span></button>)}
         </div>
         {selectedMaterialId && <p className="hint material-note">教材を選択しました。本文を確認してから音声を生成してください。問題の正解と解説は採点後に表示します。</p>}
-      </section>
+      </section>}
       <section className="workspace" aria-labelledby="input-title">
         <div className="field-heading"><label id="input-title" htmlFor="text">文章</label><span>{text.length} / {MAX_LENGTH} 文字</span></div>
-        <textarea id="text" maxLength={MAX_LENGTH} value={text} onChange={(event) => { setText(event.target.value); setSelectedMaterialId('') }} placeholder="ここに日本語の文章を入力、または貼り付けてください。" />
+        <textarea id="text" maxLength={MAX_LENGTH} value={text} onChange={(event) => { setText(event.target.value); setSelectedMaterialId(''); setMode('custom') }} placeholder={mode === 'custom' ? 'ここに日本語の文章を入力、または貼り付けてください。' : '問題集から教材を選ぶと本文が表示されます。'} />
         <p className="hint">入力した文章はこのブラウザ内で音声に変換します。最大 {MAX_LENGTH} 文字は暫定です。</p>
         <button className="primary" type="button" onClick={generate} disabled={busy}>{status === 'error' ? 'もう一度生成する' : '音声を生成する'} <span aria-hidden="true">→</span></button>
         <div className="status" role="status" aria-live="polite">
@@ -248,10 +274,10 @@ export default function App() {
           <input id="speed" type="range" min="1" max="4" step="0.1" value={speed} onChange={(event) => setSpeed(Number(event.target.value))} />
           <div className="speed-scale" aria-hidden="true"><span>1.0倍</span><span>4.0倍</span></div>
         </div>
-        {selectedMaterial && <div className="test-entry"><p className="playback-label">理解度テスト</p><p className="hint">教材を聞いた後、問題に進んで内容を確認できます。</p><button className="secondary" type="button" onClick={startTest} disabled={!audioUrl || stale}>問題に進む</button>{!audioUrl && <p className="hint">先に教材の音声を生成してください。</p>}{stale && <p className="hint">本文を変更したため、再生成してから問題に進んでください。</p>}</div>}
+        {mode === 'materials' && selectedMaterial && <div className="test-entry"><p className="playback-label">理解度テスト</p><p className="hint">教材を聞いた後、問題に進んで内容を確認できます。</p><button className="secondary" type="button" onClick={startTest} disabled={!audioUrl || stale}>問題に進む</button>{!audioUrl && <p className="hint">先に教材の音声を生成してください。</p>}{stale && <p className="hint">本文を変更したため、再生成してから問題に進んでください。</p>}</div>}
       </section>
-      {testStarted && selectedMaterial && <section className="test-panel" aria-labelledby="test-title"><h2 id="test-title">{selectedMaterial.title}の理解度テスト</h2>{testScore === null ? <><p className="hint">各問で一つ選んでください。全問回答すると採点できます。</p><form onSubmit={submitTest}>{selectedMaterial.questions.map((question, index) => <fieldset key={question.id}><legend>{index + 1}. {question.prompt}</legend>{question.choices.map((choice) => <label className="choice" key={choice.id}><input type="radio" name={question.id} value={choice.id} checked={answers[question.id] === choice.id} onChange={() => answerQuestion(question.id, choice.id)} />{choice.text}</label>)}</fieldset>)}{testError && <p className="error" role="alert">{testError}</p>}<button className="primary" type="submit">回答を確認する</button></form></> : <><p className="score">正答数：{testScore} / {selectedMaterial.questions.length}</p>{selectedMaterial.questions.map((question, index) => { const selected = question.choices.find((choice) => choice.id === answers[question.id]); const correct = question.choices.find((choice) => choice.id === question.answerId); return <article className="result" key={question.id}><h3>{index + 1}. {question.prompt}</h3><p>あなたの回答：{selected?.text}</p><p>正解：{correct?.text}</p><p>{question.explanation}</p></article>})}<button className="secondary" type="button" onClick={retryTest}>もう一度回答する</button></>}</section>}
-      {selectedMaterial && <section className="history-panel" aria-labelledby="history-title"><h2 id="history-title">過去の結果</h2><p className="hint">このブラウザに保存した、教材「{selectedMaterial.title}」の結果です。ブラウザデータを消去すると失われます。</p>{storageNotice && <p className="storage-notice" role="status">{storageNotice}</p>}{history.length ? <ul className="history-list">{history.map((record) => <li key={record.completedAt}><span>{formatCompletedAt(record.completedAt)}</span><strong>{record.score} / {record.total}</strong><span>{record.speed.toFixed(1)}倍</span></li>)}</ul> : <p className="hint">まだ記録がありません。</p>}</section>}
+      {mode === 'materials' && testStarted && selectedMaterial && <section className="test-panel" aria-labelledby="test-title"><h2 id="test-title">{selectedMaterial.title}の理解度テスト</h2>{testScore === null ? <><p className="hint">各問で一つ選んでください。全問回答すると採点できます。</p><form onSubmit={submitTest}>{selectedMaterial.questions.map((question, index) => <fieldset key={question.id}><legend>{index + 1}. {question.prompt}</legend>{question.choices.map((choice) => <label className="choice" key={choice.id}><input type="radio" name={question.id} value={choice.id} checked={answers[question.id] === choice.id} onChange={() => answerQuestion(question.id, choice.id)} />{choice.text}</label>)}</fieldset>)}{testError && <p className="error" role="alert">{testError}</p>}<button className="primary" type="submit">回答を確認する</button></form></> : <><p className="score">正答数：{testScore} / {selectedMaterial.questions.length}</p>{selectedMaterial.questions.map((question, index) => { const selected = question.choices.find((choice) => choice.id === answers[question.id]); const correct = question.choices.find((choice) => choice.id === question.answerId); return <article className="result" key={question.id}><h3>{index + 1}. {question.prompt}</h3><p>あなたの回答：{selected?.text}</p><p>正解：{correct?.text}</p><p>{question.explanation}</p></article>})}<button className="secondary" type="button" onClick={retryTest}>もう一度回答する</button></>}</section>}
+      {mode === 'materials' && selectedMaterial && <section className="history-panel" aria-labelledby="history-title"><h2 id="history-title">過去の結果</h2><p className="hint">このブラウザに保存した、教材「{selectedMaterial.title}」の結果です。ブラウザデータを消去すると失われます。</p>{storageNotice && <p className="storage-notice" role="status">{storageNotice}</p>}{history.length ? <ul className="history-list">{history.map((record) => <li key={record.completedAt}><span>{formatCompletedAt(record.completedAt)}</span><strong>{record.score} / {record.total}</strong><span>{record.speed.toFixed(1)}倍</span></li>)}</ul> : <p className="hint">まだ記録がありません。</p>}</section>}
       <p className="footnote">初回の音声データ取得量：{size ? `約 ${(size / 1024 / 1024).toFixed(1)} MiB（ファイルの合計）` : '確認できません'}。通信量は圧縮やキャッシュにより異なります。{transferredBytes !== null && ` 今回の音声データ取得時の転送量：約 ${(transferredBytes / 1024 / 1024).toFixed(1)} MiB（ブラウザ計測）。`}</p>
     </main>
   )
